@@ -40,3 +40,12 @@ Analiza datos académicos cuantitativos con selección de método, verificación
 - interpretación en lenguaje académico;
 - limitaciones;
 - formato de reporte compatible con APA cuando aplique.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+- `outputs.analysis`: método, resultados, supuestos y diagnóstico.
+- `findings`: errores de datos, supuestos, interpretación o diseño.
+- `gaps`: variables, unidades, diseño o información faltante.
+- `next_recommended`: `academic-evidence-mapper`, `academic-tables-figures` y/o `academic-critical-review`.
+- `critical_gate: fail` si los datos/diseño no soportan el método aplicado o si existe un error que invalida materialmente la interpretación.
