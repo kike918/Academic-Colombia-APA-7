@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.13.0 - 2026-08-31
+
+### Added
+- `scripts/validate_repo.py` como validador estructural del framework declarativo.
+- `.github/workflows/validate.yml` para ejecutar validación y comprobar que los paquetes de Skills puedan generarse.
+- `tests/REPOSITORY_VALIDATION_CASES.md` con 20 casos de aceptación de consistencia del repositorio.
+
+### Validation scope
+- archivos canónicos obligatorios;
+- formato `VERSION` y sincronización con `CHANGELOG.md`;
+- presencia y nombre de `SKILL.md` por directorio;
+- marcadores del Skill Contract v1 y `critical_gate`;
+- consistencia entre `skills/` y `distribution/SKILLS-MANIFEST.md`;
+- links Markdown internos;
+- taxonomía externa A–E;
+- existencia del empaquetador y exclusión de `dist/`.
+
+### Boundaries
+- CI valida estructura/consistencia, no reemplaza tests académicos, E2E, adversariales ni aceptación runtime de ChatGPT/Gemini.
+- No se modifica comportamiento del core ni de las Skills.
+
 ## 0.12.0 - 2026-08-31
 
 ### Added

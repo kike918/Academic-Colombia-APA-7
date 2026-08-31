@@ -55,7 +55,7 @@ contradictions: []
 - Si solo se dispone de abstract/resumen, no atribuir detalles metodológicos no visibles.
 - Cuando el soporte sea parcial, expresarlo y no elevarlo artificialmente a `strong`.
 
-## Contrato común
+## Skill Contract v1
 
 Cumplir `core/SKILL-CONTRACT.md`.
 
