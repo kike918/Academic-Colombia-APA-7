@@ -37,3 +37,14 @@ Gestiona, convierte, valida y concilia citas/referencias académicas sin inventa
 - metadatos pendientes;
 - enlaces/DOI inválidos;
 - readiness de citación.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+
+- `outputs.citation_map`: correspondencia cita ↔ referencia.
+- `outputs.normalized_references`: referencias cuya metadata pudo verificarse.
+- `findings`: huérfanas, duplicados, DOI/URL inválidos y problemas de estilo.
+- `gaps`: metadatos o evidencia no verificables.
+- `next_recommended`: `academic-evidence-mapper`, `apa7-academic-style` o `academic-final-review` según el estado.
+- `critical_gate: fail` si una afirmación material depende de una cita inexistente/inventada o si una referencia crítica no puede reconciliarse.
