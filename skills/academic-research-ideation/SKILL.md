@@ -38,3 +38,13 @@ Genera y prioriza ideas de investigación sin confundir creatividad con evidenci
 - explicaciones rivales;
 - criterios de priorización;
 - siguiente paso recomendado.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+
+- `outputs.questions` y `outputs.hypotheses`: candidatos priorizados, no hechos.
+- `findings`: supuestos, explicaciones rivales y riesgos.
+- `gaps`: evidencia/datos necesarios para validar ideas.
+- `next_recommended`: `academic-source-evaluator` y/o `academic-evidence-mapper`.
+- `critical_gate: not_applicable` salvo que la actividad dependa explícitamente de una propuesta metodológicamente inviable o éticamente bloqueada.
