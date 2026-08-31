@@ -56,3 +56,13 @@ Incluye CONTENT_DECISION autorizado. Requiere especial cuidado para no cambiar l
 - resultado de render QA;
 - readiness final;
 - comparación conceptual original → corregido.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+- `outputs.repaired_artifact`: copia corregida, nunca sobrescritura silenciosa.
+- `outputs.applied_changes` y `outputs.skipped_changes`: cambios trazables.
+- `findings`: defectos post-repair o divergencias detectadas.
+- `gaps`: cambios bloqueados por evidencia o decisión.
+- `next_recommended`: re-auditoría/artifact QA y `academic-final-review`.
+- `critical_gate: fail` si el render/QA post-repair falla o si quedó un cambio crítico obligatorio sin resolver.
