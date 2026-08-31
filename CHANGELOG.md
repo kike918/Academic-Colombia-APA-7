@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.6.0 - 2026-08-30
+
+### Added
+- Evaluación jerárquica de fuentes externas.
+- Módulo versionable `AI-USAGE-AND-CITATION`.
+- Skills `academic-citation-manager`, `academic-critical-review`, `academic-statistical-analysis`, `academic-research-ideation` y `academic-source-evaluator`.
+- 15 casos de aceptación para investigación, análisis y citación.
+
+### Changed
+- Separación explícita entre autoridad normativa, fuente universitaria, repositorio técnico, guía secundaria y contenido promocional.
+- Política de IA desacoplada del core APA para permitir actualizaciones rápidas.
+
+## 0.5.0 - 2026-08-30
+
+### Added
+- Matriz de validación multiartefacto para DOCX, XLSX, PPTX, video/YouTube, landing pages, infografías y gráficos.
+- Skill `academic-artifact-validator`.
+- 15 casos de aceptación multiartefacto.
+
+## 0.4.0 - 2026-08-30
+
+### Added
+- Validación de plantillas académicas UNAD.
+- Perfil canónico `UNAD-TEMPLATE-PROFILE`.
+- Skill `academic-template-selector`.
+- Casos de compatibilidad de plantillas y documentos académicos reales.
+
 ## 0.3.0 - 2026-08-30
 
 ### Added
