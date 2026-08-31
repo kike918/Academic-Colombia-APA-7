@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.14.0 - 2026-08-31
+
+### Added
+- `institutions/TEMPLATE.md` para futuras extensiones institucionales basadas en evidencia.
+- `tests/EMPIRICAL_EVIDENCE_REGISTRY.md` para separar casos ejecutados, parciales, fixtures y capacidades no reclamadas.
+- `tests/EMPIRICAL_CASE_TEMPLATE.md` para incorporar actividades reales anonimizadas sin publicar datos personales ni asumir derechos de redistribución.
+- `docs/V0.14-PRE-RELEASE-READINESS.md` con evaluación de readiness hacia v1.0 y límites de cobertura empírica.
+
+### Changed
+- v0.14 cambia el foco desde construcción de capacidades hacia pre-release basado en evidencia real.
+- Se documenta explícitamente que DOCX/UNAD tiene mayor profundidad empírica que XLSX, PPTX, video y estadística.
+- Runtime de Custom GPT y Gemini Gem continúa como `NOT_CLAIMED` hasta desplegar y ejecutar suites reales.
+- No se crea `academic-integrity-review` porque la evidencia actual no demuestra un gap recurrente no cubierto por las skills existentes.
+
+### Release boundary
+- No se añaden nuevas skills generales ni nuevas instituciones.
+- Los fixtures no se promocionan artificialmente a pruebas ejecutadas.
+- Después de v0.14 el siguiente trabajo de framework es preparación de v1.0: política de compatibilidad/releases, auditoría final y runtime acceptance cuando estén disponibles las instancias reales.
+
 ## 0.13.0 - 2026-08-31
 
 ### Added
@@ -105,7 +124,7 @@
 - MIT License para uso, modificación y distribución pública del framework.
 - `core/ORCHESTRATION.md` como flujo canónico y portable entre skills.
 - Skill `academic-workflow-orchestrator` para routing condicional por tipo de trabajo/artefacto.
-- `CONTRIBUTING.md` con política branch/fork + pull request.
+- `CONTRIBUTING.md` con política branch/fork + PR.
 - `docs/REPOSITORY-GOVERNANCE.md` con política de `main`, merges y configuración recomendada de ruleset.
 
 ### Changed
