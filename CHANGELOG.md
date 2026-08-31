@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.14.1 - 2026-08-31
+
+### Added
+- `tests/empirical/sena/EMP-SENA-2026-01-CINE-FUTURO.md` con una ejecución real anonimizada de informe financiero, revisión crítica, presentación visual y guía de video SENA.
+- Evidencia empírica diferenciada para informe escrito, presentación visual y ruta de video parcial.
+
+### Changed
+- `EMP-03` pasa de fixture SENA a `EXECUTED` para un flujo real de informe financiero.
+- `EMP-06` pasa a `PARTIAL` con soporte real de guía de grabación + presentación, manteniendo pendiente el video reproducido.
+- Se añaden `EMP-12` y `EMP-13` para presentación visual real y cadena draft → critical review → corrected artifact.
+- `docs/V0.14-PRE-RELEASE-READINESS.md` actualiza SENA a `READY WITH BOUNDED COVERAGE`.
+
+### Empirical validation
+- Los principales ratios del caso fueron recalculados independientemente y coinciden con los valores finales dentro del redondeo normal.
+- La versión anterior permitió comprobar detección de overclaims: benchmark sectorial no sustentado, exactitud excesiva en cartera, inferencias sobre costo de capital y conclusiones absolutas.
+- El DOCX final fue renderizado a nueve páginas y revisado visualmente sin defectos de clipping, solapamiento, tablas rotas o glifos faltantes observados.
+- La presentación PDF de seis páginas mantiene consistencia narrativa y numérica con el informe final.
+- El video continúa sin validación runtime porque no se inspeccionó reproducción/audio/duración/accesibilidad del enlace.
+
 ## 0.14.0 - 2026-08-31
 
 ### Added
@@ -173,7 +192,8 @@
 ## 0.5.0 - 2026-08-30
 
 ### Added
-- Matriz de validación multiartefacto para DOCX, XLSX, PPTX, video/YouTube, landing pages, infografías y gráficos.
+- Matriz de validación multiartefacto para DOCX, XLSX, PPTX.
+- Video/YouTube, landing pages, infografías y gráficos.
 - Skill `academic-artifact-validator`.
 - 15 casos de aceptación multiartefacto.
 
