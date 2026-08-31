@@ -1,19 +1,31 @@
 # Academic Colombia
 
-**Skills académicas reutilizables para analizar, desarrollar, revisar y entregar trabajos universitarios con trazabilidad, requisitos institucionales y APA 7.**
+**Framework académico modular para asistentes de IA — APA 7, UNAD y SENA.**
 
-Academic Colombia no es una guía teórica de APA ni una institución educativa. Es un framework de skills que ayuda a convertir una actividad académica en un flujo controlado de trabajo.
+Academic Colombia ayuda a convertir una actividad académica en un flujo controlado de requisitos, evidencia, contenido, artefacto y revisión final.
 
-## Qué resuelve
+No es una guía teórica de APA ni una institución educativa. Tampoco es una aplicación tradicional: es un framework declarativo compuesto por Skills, perfiles institucionales, reglas de routing, contratos, QA y adapters para asistentes de IA.
 
-- leer guías y rúbricas antes de empezar;
-- decidir qué estructura y artefacto necesita realmente la actividad;
-- investigar y evaluar fuentes;
-- conectar afirmaciones con evidencia verificable;
-- aplicar APA 7 respetando primero las reglas de la institución y la actividad;
-- revisar tablas, figuras, datos y análisis estadísticos;
-- auditar y reparar documentos existentes;
-- validar el entregable antes de declararlo listo.
+## Estado
+
+**Versión estable: 1.0.0**
+
+v1 estabiliza el core, Skill Contract v1, las 16 Skills nativas, los perfiles UNAD/SENA, los adapters estáticos ChatGPT/Gemini, la distribución de Skills y la validación declarativa del repositorio.
+
+➡️ [Release readiness](V1.0-RELEASE-READINESS.md)
+
+## Qué hace
+
+- lee guías y rúbricas antes de empezar;
+- selecciona la estructura y el artefacto adecuados;
+- evalúa fuentes y vigencia;
+- conecta afirmaciones con evidencia verificable;
+- gestiona citas y referencias;
+- aplica APA 7 respetando primero la actividad y la institución;
+- revisa análisis, tablas, figuras y datos;
+- valida DOCX, XLSX, presentaciones, infografías, video y web según el artefacto;
+- audita y repara documentos existentes;
+- bloquea la entrega cuando existe un fallo crítico.
 
 ## Regla principal
 
@@ -21,85 +33,114 @@ La autoridad se aplica en este orden:
 
 1. instrucción explícita del usuario;
 2. guía de la actividad;
-3. rúbrica o instrumento de evaluación;
-4. instrucciones del tutor/docente;
-5. reglas institucionales;
+3. rúbrica;
+4. tutor/docente;
+5. institución;
 6. APA 7;
 7. convenciones académicas generales.
 
-**APA no reemplaza una instrucción explícita de la actividad.**
+**APA no reemplaza instrucciones explícitas de una actividad.**
 
-## Cómo funciona
+## Flujo
 
 ```text
 actividad / guía / rúbrica
           ↓
-academic-workflow-orchestrator
+requirements + template
           ↓
-skills necesarias según el caso
+research / evidence
           ↓
-evidencia + contenido + artefacto
+content / artifact
           ↓
-validación y revisión final
+APA + critical review
+          ↓
+artifact/document QA
+          ↓
+final review
           ↓
 READY / NOT READY / USER DECISION REQUIRED
 ```
 
-No todas las skills se ejecutan siempre. El orquestador selecciona únicamente las que aportan al trabajo.
-
-## Principios básicos
-
-- No inventar autores, DOI, URLs, páginas, leyes, datos ni fuentes.
-- Toda afirmación material debe tener respaldo suficiente cuando corresponda.
-- Una referencia al final no prueba por sí sola que respalde una afirmación concreta.
-- Una plantilla institucional no obliga a incluir todas sus secciones si la actividad no las requiere.
-- Una infografía debe seguir siendo una infografía; una presentación, una presentación; un XLSX, un XLSX.
-- Los fallos críticos no se compensan con un promedio alto de otros criterios.
-- Solo la revisión final puede declarar un entregable `READY`.
+No todas las Skills se ejecutan siempre.
 
 ## Skills
 
-Academic Colombia incluye 16 skills nativas organizadas en planificación, investigación/evidencia, APA, análisis, artefactos, auditoría/reparación y QA.
+Academic Colombia contiene **16 Skills nativas** organizadas en:
 
-➡️ [Ver directorio completo de skills](SKILLS-DIRECTORY.md)
+- orquestación;
+- requisitos y estructura;
+- investigación y evidencia;
+- análisis;
+- APA y artefactos;
+- auditoría y reparación;
+- QA final;
+- fallback externo controlado.
 
-## Instituciones
+➡️ [Directorio de Skills](SKILLS-DIRECTORY.md)
 
-El framework incluye perfiles específicos para:
+## Principios de calidad
 
-- **UNAD**;
-- **SENA**.
+- No inventar autores, DOI, URLs, páginas, leyes, datos o fuentes.
+- Una fuente correcta puede estar mal interpretada: el número y el significado deben verificarse.
+- Una bibliografía final no sustituye citas/evidencia dentro del trabajo.
+- Un artefacto visualmente limpio puede seguir estando académicamente `NOT READY`.
+- Un `critical_gate: fail` no se compensa con otros criterios positivos.
+- Los hechos actuales requieren verificación de vigencia.
+- Una presentación debe seguir siendo una presentación; un XLSX, un XLSX; una infografía, una infografía.
 
-Las reglas institucionales se aplican únicamente cuando corresponde y nunca se generalizan automáticamente a otras universidades.
+## Evidencia real
 
-## Uso
+La versión estable se apoya en actividades reales anonimizadas de UNAD y SENA, incluyendo documentos extensos, presentaciones visuales, análisis financiero, comercio internacional, normativa y un workbook contable XLSX reconciliado.
 
-El core es independiente de plataforma y puede empaquetarse para asistentes compatibles como:
+El registro distingue entre:
 
-- ChatGPT / Custom GPT / Skills;
-- Gemini Gems;
-- otras plataformas capaces de consumir instrucciones y knowledge modular.
+```text
+EXECUTED
+PARTIAL
+FIXTURE_READY
+NOT_CLAIMED
+```
 
-GitHub es la fuente canónica. Los paquetes de plataforma deben derivarse del repositorio para evitar versiones divergentes.
+➡️ [Empirical Evidence Registry](../tests/EMPIRICAL_EVIDENCE_REGISTRY.md)
+
+## Uso en IA
+
+### ChatGPT
+
+Adapter, Knowledge Manifest, Instructions y distribución de Skills disponibles.
+
+➡️ [Instalación ChatGPT](../platforms/chatgpt-gpt/INSTALLATION.md) · [Instalar Skills](../distribution/INSTALL-CHATGPT-SKILLS.md)
+
+Runtime real de un Custom GPT permanece `NOT_CLAIMED` hasta probar la instancia.
+
+### Gemini
+
+Adapter Gem, Knowledge Manifest e instalación disponibles.
+
+➡️ [Instalación Gemini](../platforms/gemini/INSTALLATION.md)
+
+Runtime real del Gem permanece `NOT_CLAIMED` hasta probar la instancia.
+
+## Compatibilidad
+
+Desde v1.0 usamos Semantic Versioning sobre **comportamiento declarativo observable**.
+
+Una modificación de Markdown puede ser breaking si cambia de forma incompatible el routing, la autoridad, el Skill Contract o la decisión READY/NOT READY.
+
+➡️ [Compatibility Policy](COMPATIBILITY-POLICY.md)
 
 ## Documentación
 
-- [Directorio de skills](SKILLS-DIRECTORY.md)
-- [Arquitectura](ARCHITECTURE.md)
-- [Estrategia de documentación](DOCUMENTATION-STRATEGY.md)
+- [Skills Directory](SKILLS-DIRECTORY.md)
+- [Architecture](ARCHITECTURE.md)
+- [Artifact Validation Matrix](ARTIFACT-VALIDATION-MATRIX.md)
+- [Repository Governance](REPOSITORY-GOVERNANCE.md)
 - [Roadmap](ROADMAP.md)
-- [Validación v0.10](V0.10-VALIDATION-REPORT.md)
-- [Gobernanza del repositorio](REPOSITORY-GOVERNANCE.md)
-- [Alcance de licencia y terceros](LICENSE-SCOPE.md)
-
-## Estado
-
-Versión: **0.10.2**
-
-El motor académico está en fase de estabilización y pruebas end-to-end antes de los adaptadores de producción por plataforma.
+- [License Scope](LICENSE-SCOPE.md)
+- [v1.0 Release Readiness](V1.0-RELEASE-READINESS.md)
 
 ## Licencia
 
-El contenido original del proyecto se distribuye bajo MIT License. Las referencias, nombres, marcas, normas y materiales de terceros conservan sus propios derechos y condiciones.
+El contenido original se distribuye bajo MIT License. Materiales, marcas, normas y recursos externos o institucionales conservan sus propios derechos.
 
 Academic Colombia no está afiliado, patrocinado ni respaldado oficialmente por APA, UNAD, SENA u otras instituciones mencionadas.
