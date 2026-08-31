@@ -1,5 +1,37 @@
 # Changelog
 
+## 1.0.0 - 2026-08-31
+
+### Stable contracts
+- Skill Contract v1 becomes the stable interoperability contract for the v1 line.
+- Core routing, authority hierarchy, evidence-chain principles, critical-gate propagation and final readiness semantics are declared stable.
+- GitHub `main` remains the canonical source; ChatGPT/Gemini packages remain adapters and distribution layers.
+- Native Skill package convention remains `skills/<skill-name>/SKILL.md`.
+
+### Added
+- `docs/COMPATIBILITY-POLICY.md` defining Semantic Versioning for declarative behavior, Skills, institutional profiles and platform adapters.
+- `docs/V1.0-RELEASE-READINESS.md` with the final release audit, coverage boundaries and governance checklist.
+- Stable release documentation for bounded empirical claims rather than exhaustive-platform/institution claims.
+
+### Empirical release evidence
+- Real UNAD and SENA workflows cover documents, evidence review, visual presentations and multi-artifact consistency.
+- Native XLSX accounting execution reconciles journal entries, T-accounts, trial balance and SIIGO totals.
+- Negative empirical cases demonstrate detection of stale facts, weak sources, citation/reference gaps, non-comparable periods, semantic misuse of valid source numbers and visually polished but academically insufficient artifacts.
+- Native PPTX editing/runtime, actual video playback, inferential-statistics real dataset execution and ChatGPT/Gemini runtime remain explicitly not claimed.
+
+### Governance
+- Declarative CI has passed repeatedly on normal pull requests and is considered stable for required-status-check enforcement.
+- `main` protection continues to require pull requests, linear history and resolved review conversations with no bypass actors.
+- Historical merged feature branches are non-release dependencies and should be deleted as repository hygiene.
+
+### Compatibility
+- v1.x follows `docs/COMPATIBILITY-POLICY.md`.
+- A Markdown/prompt wording change that intentionally breaks observable routing, readiness or contract behavior is treated as a breaking change even when no executable code changes.
+
+### Release boundary
+- v1.0.0 stabilizes the framework architecture and public contracts; it does not claim exhaustive coverage of every Colombian institution, artifact type, academic domain or AI runtime.
+- Post-v1 work should be evidence-driven and backward-compatible unless a future major version is justified.
+
 ## 0.14.1 - 2026-08-31
 
 ### Added
