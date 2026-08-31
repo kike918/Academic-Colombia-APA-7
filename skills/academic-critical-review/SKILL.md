@@ -36,3 +36,13 @@ Revisa borradores académicos separando afirmaciones, evidencia, inferencias, li
 - sesgos/riesgos;
 - conclusiones soportadas/no soportadas;
 - acciones recomendadas.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+
+- `outputs.review`: evaluación de razonamiento, metodología y conclusiones.
+- `findings`: claims sobreextendidos, sesgos, inferencias inválidas y limitaciones omitidas.
+- `gaps`: evidencia o información metodológica faltante.
+- `next_recommended`: `academic-evidence-mapper`, `academic-statistical-analysis` o `academic-final-review`.
+- `critical_gate: fail` si una conclusión central excede materialmente la evidencia o existe un error metodológico que invalida la respuesta.
