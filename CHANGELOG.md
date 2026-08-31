@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0 - 2026-08-30
+
+### Added
+- Workflow operativo para normativa y jurisprudencia colombiana.
+- Skill `academic-tables-figures`.
+- 15 casos de regresión específicos del motor APA.
+
+### Changed
+- `core/APA7.md` ampliado con reglas operativas de citas, referencias, DOI/URL, tablas, figuras, formato general y control anti-alucinación.
+- Política explícita de verificación de localizadores, metadatos y fuentes jurídicas.
+
 ## 0.2.0 - 2026-08-30
 
 ### Added
