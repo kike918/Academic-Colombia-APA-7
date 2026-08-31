@@ -1,32 +1,32 @@
 # Academic Colombia — APA 7
 
-Repositorio canónico para gestionar, versionar y reutilizar reglas académicas orientadas a **APA 7**, **UNAD** y **SENA** en asistentes de inteligencia artificial.
+Repositorio canónico para gestionar, versionar y reutilizar reglas académicas orientadas a **APA 7**, **UNAD**, **SENA** y documentos universitarios en asistentes de inteligencia artificial.
 
 ## Objetivo
 
 Mantener una única fuente de verdad para:
 
-* análisis de guías de aprendizaje y rúbricas;
-* aplicación de normas APA 7;
-* perfiles institucionales para UNAD y SENA;
-* revisión de citas y referencias;
-* control de calidad académica;
-* generación y auditoría de contenidos académicos;
-* reutilización de las mismas reglas en diferentes plataformas de IA.
+- análisis de guías y rúbricas;
+- investigación y evaluación de fuentes;
+- aplicación de APA 7 y perfiles institucionales;
+- citación y referencias;
+- tablas, figuras y análisis estadístico;
+- validación de DOCX, XLSX, PPTX, video, web, infografías y gráficos;
+- auditoría y reparación controlada de documentos;
+- revisión crítica y QA final;
+- reutilización portable en distintas plataformas de IA.
 
 ## Plataformas objetivo
 
-La arquitectura está diseñada para soportar inicialmente:
+La lógica académica es independiente de plataforma. Los adaptadores pueden empaquetarla como:
 
-* ChatGPT Custom GPTs;
-* OpenAI Skills;
-* posteriormente Gemini Gems.
+- ChatGPT / Custom GPT / Skills;
+- Gemini Gems;
+- Sparks u otros asistentes compatibles.
 
-La lógica académica debe mantenerse independiente de la plataforma para evitar duplicación y divergencia entre versiones.
+Los adaptadores consumen el repositorio; no reemplazan la fuente canónica.
 
 ## Principio de autoridad
-
-Cuando exista conflicto entre requisitos, se aplica este orden:
 
 1. Instrucción explícita del usuario.
 2. Guía oficial de la actividad.
@@ -36,47 +36,36 @@ Cuando exista conflicto entre requisitos, se aplica este orden:
 6. APA 7.
 7. Convenciones académicas generales.
 
-Una regla genérica de APA nunca debe reemplazar un requisito explícito de la actividad.
+Una regla genérica nunca debe reemplazar un requisito explícito de la actividad.
 
-## Principios de calidad
+## Orquestación
 
-Este proyecto debe:
+`core/ORCHESTRATION.md` define el routing canónico entre skills. La skill `academic-workflow-orchestrator` aplica ese routing sin depender de n8n, webhooks, RAG externo ni asistentes persistentes.
 
-* evitar referencias o datos bibliográficos inventados;
-* priorizar fuentes oficiales, primarias y académicas;
-* mantener correspondencia entre citas y referencias;
-* adaptar la profundidad del trabajo al tipo de evidencia solicitada;
-* evitar sobredimensionar entregables;
-* revisar cada trabajo contra su guía y rúbrica antes de considerarlo terminado.
+No todas las skills se ejecutan en todas las actividades: el flujo se adapta al tipo de artefacto, estado del trabajo y gaps de cobertura.
 
-## Arquitectura prevista
+## Arquitectura
 
 ```text
 Academic-Colombia-APA-7/
 ├── core/
 │   ├── CORE.md
-│   └── APA7.md
-│
+│   ├── APA7.md
+│   ├── LEGAL-COLOMBIA.md
+│   ├── AI-USAGE-AND-CITATION.md
+│   └── ORCHESTRATION.md
 ├── institutions/
 │   ├── UNAD.md
 │   └── SENA.md
-│
+├── templates/
 ├── skills/
-│   ├── academic-requirements-analyzer/
-│   ├── apa7-academic-style/
-│   └── academic-final-review/
-│
+├── external-references/
 ├── quality/
-│   └── ACADEMIC-QA.md
-│
+├── tests/
 ├── platforms/
-│   ├── chatgpt-gpt/
-│   └── gemini/
-│
 ├── docs/
-│   ├── ARCHITECTURE.md
-│   └── ROADMAP.md
-│
+├── LICENSE
+├── CONTRIBUTING.md
 ├── CHANGELOG.md
 ├── VERSION
 └── README.md
@@ -86,29 +75,27 @@ Academic-Colombia-APA-7/
 
 **GitHub es la fuente canónica del proyecto.**
 
-Las configuraciones de Custom GPTs, Skills y Gems deben derivarse de este repositorio y no mantenerse como versiones independientes.
+Las configuraciones instaladas en plataformas de IA deben derivarse de este repositorio y no mantenerse como versiones divergentes.
+
+## Gobernanza
+
+- `main` es la rama canónica.
+- Los cambios deben llegar mediante branch/fork + pull request.
+- Los ejemplos de estudiantes deben anonimizarse antes de convertirse en tests.
+- Las fuentes externas se consumen únicamente mediante el registry y resolver definidos por el proyecto.
+
+Ver `CONTRIBUTING.md` y `docs/REPOSITORY-GOVERNANCE.md`.
 
 ## Estado
 
-Proyecto en fase inicial.
+Framework académico modular en desarrollo activo.
 
-Versión prevista inicial:
+Versión actual de esta rama: `0.9.0`.
 
-`0.1.0`
+El proyecto ya cubre planificación, investigación, citación, APA, perfiles institucionales, artefactos, referencias externas, auditoría/reparación documental y orquestación portable.
 
-Primer alcance:
+## Licencia
 
-* Core académico.
-* APA 7 operativo.
-* Perfil UNAD.
-* Perfil SENA.
-* Academic QA.
-* Skills iniciales para ChatGPT/OpenAI.
-* Adaptador para Custom GPT.
-* Preparación para Gemini Gems.
+Academic Colombia se distribuye bajo la **MIT License**.
 
-## Licencia y uso
-
-El repositorio se utiliza inicialmente como infraestructura académica reutilizable y versionada para asistentes de IA.
-
-La política de licencia y distribución pública podrá definirse en una versión posterior.
+Se permite usar, copiar, modificar, distribuir y adaptar el repositorio, conservando el aviso de copyright y la licencia correspondiente.
