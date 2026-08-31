@@ -2,7 +2,7 @@
 
 **Academic Colombia** es un framework modular de skills para asistentes de IA orientado a planificar, investigar, construir, auditar y corregir entregables académicos en el contexto colombiano, con foco inicial en **APA 7, UNAD y SENA**.
 
-El repositorio es la **fuente canónica**. Las implementaciones en ChatGPT, Gemini, Sparks u otras plataformas deben consumir esta lógica sin crear reglas paralelas.
+El repositorio es la **fuente canónica**. Las implementaciones en ChatGPT, Gemini u otras plataformas deben consumir esta lógica sin crear reglas paralelas.
 
 > **Principio central:** la guía y la rúbrica gobiernan el trabajo; APA y las reglas institucionales ayudan a implementarlo correctamente, pero nunca reemplazan requisitos explícitos de la actividad.
 
@@ -25,11 +25,11 @@ Academic Colombia evita que un asistente académico funcione como un único prom
 
 ## Estado
 
-**Versión actual:** `0.11.0`
+**Versión actual:** `0.12.0`
 
-El core académico está estabilizado y el repositorio ya incluye un **paquete de adapter para ChatGPT** con Instructions consolidadas, Knowledge Manifest, estrategia de contexto, instalación, few-shot examples y suites de aceptación/adversariales.
+El core académico está estabilizado. El repositorio incluye paquetes de adapter para **ChatGPT** y **Gemini**, además de distribución reproducible de las 16 Skills nativas.
 
-La compatibilidad estática del paquete está validada. La ejecución completa de esos casos en una instancia real de Custom GPT sigue siendo el gate pendiente antes de anunciar un deployment público como validado en producción.
+La validación estática y las especificaciones cross-platform están completas. La ejecución de las suites en un Custom GPT y un Gem reales sigue siendo el gate pendiente antes de anunciar deployments públicos como validados en runtime.
 
 ## Skills
 
@@ -165,32 +165,29 @@ El core es platform-neutral.
 
 ### ChatGPT
 
-El paquete de adapter se encuentra en:
+`platforms/chatgpt-gpt/` incluye Instructions, configuración, Knowledge Manifest, instalación, estrategia de contexto, few-shot examples y suites específicas.
 
-`platforms/chatgpt-gpt/`
+La distribución de Skills está documentada en [`distribution/`](distribution/README.md) y puede generar 16 ZIP individuales + un bundle desde la fuente canónica.
 
-Incluye:
-
-- `INSTRUCTIONS.md`;
-- `GPT_CONFIG.md`;
-- `KNOWLEDGE_MANIFEST.md`;
-- `INSTALLATION.md`;
-- `CONTEXT-STRATEGY.md`;
-- `FEW-SHOT-EXAMPLES.md`.
-
-La validación estática del paquete es PASS; la aceptación runtime en un Custom GPT real permanece pendiente antes de declararlo deployment público validado.
+La validación estática es PASS; runtime en un Custom GPT real permanece PENDING.
 
 ### Gemini
 
-El adapter base se encuentra en:
+`platforms/gemini/` incluye:
 
-`platforms/gemini/`
+- `GEM_INSTRUCTIONS.md`;
+- `GEM_CONFIG.md`;
+- `KNOWLEDGE_MANIFEST.md`;
+- `INSTALLATION.md`;
+- `FEW-SHOT-EXAMPLES.md`.
 
-Su actualización contra el core actual corresponde a v0.12.
+El adapter soporta Knowledge por snapshot local o mediante archivos de Google Drive cuando la cuenta lo permita. GitHub sigue siendo la fuente canónica; Drive actúa solo como capa de distribución/sincronización.
 
-### Sparks / otras plataformas
+La validación estática es PASS; runtime en un Gem real permanece PENDING.
 
-Podrán consumir las mismas skills y contratos mediante adapters específicos sin modificar el core académico. Solo se añadirá un adapter cuando la forma de instalación de la plataforma esté suficientemente definida.
+### Otras plataformas
+
+Se añadirá un adapter solo cuando la forma de instrucciones, Knowledge/archivos y despliegue de la plataforma esté suficientemente definida. No se crean adapters nominales sin una superficie real que validar.
 
 ## Cómo usar el repositorio
 
@@ -202,13 +199,23 @@ Podrán consumir las mismas skills y contratos mediante adapters específicos si
 4. incorpora esa skill al sistema/agente compatible;
 5. conserva `core/ORCHESTRATION.md`, `core/SKILL-CONTRACT.md` y los perfiles institucionales relevantes como contexto común.
 
+### Para instalar las Skills en ChatGPT
+
+Empieza por:
+
+[`distribution/INSTALL-CHATGPT-SKILLS.md`](distribution/INSTALL-CHATGPT-SKILLS.md)
+
 ### Para instalar el adapter ChatGPT
 
 Empieza por:
 
 [`platforms/chatgpt-gpt/INSTALLATION.md`](platforms/chatgpt-gpt/INSTALLATION.md)
 
-El manifest determina qué va en Instructions, qué va en Knowledge y qué archivos deben permanecer locales a cada actividad.
+### Para instalar el Gem
+
+Empieza por:
+
+[`platforms/gemini/INSTALLATION.md`](platforms/gemini/INSTALLATION.md)
 
 ### Para implementar Academic Colombia completo
 
@@ -233,10 +240,12 @@ Academic-Colombia-APA-7/
 ├── institutions/         # perfiles UNAD y SENA
 ├── templates/            # perfiles/plantillas académicas
 ├── skills/               # capacidades modulares
+├── distribution/         # empaquetado reproducible de Skills
 ├── external-references/  # fallback externo controlado
 ├── quality/              # gates de QA académico
 ├── tests/                # aceptación, regresión, routing y E2E
 ├── platforms/            # adapters para asistentes
+├── scripts/              # utilidades de distribución/validación
 ├── docs/                 # arquitectura, workflows y documentación
 ├── LICENSE
 ├── CONTRIBUTING.md
@@ -261,8 +270,10 @@ El repositorio incluye suites para:
 - Skill Contract;
 - routing de orquestación;
 - escenarios E2E;
-- adapter ChatGPT;
-- casos adversariales ChatGPT.
+- distribución de Skills;
+- adapter ChatGPT y casos adversariales;
+- adapter Gemini;
+- consistencia conductual cross-platform.
 
 Los casos distinguen explícitamente entre especificación declarativa, pruebas realmente ejecutadas y validaciones todavía pendientes de runtime.
 

@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.12.0 - 2026-08-31
+
+### Added
+- `platforms/gemini/GEM_CONFIG.md` con configuración de producción del Gem.
+- `platforms/gemini/KNOWLEDGE_MANIFEST.md` para separar core, instituciones, skills y archivos task-scoped.
+- `platforms/gemini/INSTALLATION.md` con instalación por snapshot o Knowledge respaldado por Drive.
+- `platforms/gemini/FEW-SHOT-EXAMPLES.md` con 8 ejemplos de routing, integridad y límites.
+- `tests/GEMINI_ADAPTER_CASES.md` con 20 casos de aceptación.
+- `tests/CROSS_PLATFORM_BEHAVIOR_CASES.md` con 15 casos de consistencia ChatGPT ↔ Gemini.
+- `docs/V0.12-VALIDATION-REPORT.md` con verificación estática y runtime pendiente.
+
+### Changed
+- `platforms/gemini/GEM_INSTRUCTIONS.md` deja de ser scaffold v0.1 y pasa a adapter alineado con ORCHESTRATION, Skill Contract, evidencia, artefactos y critical gates.
+- Gemini Knowledge desde Drive se documenta como capa de distribución actualizable; GitHub continúa como fuente canónica.
+- No se fijan límites numéricos de producto como contrato del framework; deben verificarse al instalar.
+
+### Validation
+- Gemini static adapter readiness: PASS.
+- Cross-platform behavioral specification: PASS.
+- Gemini Gem runtime acceptance: PENDING.
+- ChatGPT Custom GPT runtime acceptance: PENDING.
+
 ## 0.11.0 - 2026-08-31
 
 ### Added
