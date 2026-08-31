@@ -79,3 +79,14 @@ Entregar:
 - evidencia pendiente si aplica;
 - readiness por dimensión y global;
 - lista de cambios autorizables para `academic-document-repair`.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+
+- `outputs.audit_findings`: matriz de hallazgos y ubicación.
+- `outputs.repair_classes`: SAFE_AUTOFIX / EVIDENCE_REQUIRED / CONTENT_DECISION.
+- `findings`: errores técnicos, académicos, APA y de trazabilidad.
+- `gaps`: evidencia o reglas no disponibles.
+- `next_recommended`: `academic-evidence-mapper`, `academic-citation-manager`, `academic-document-repair` o decisión del usuario.
+- `critical_gate: fail` si existe un defecto crítico de guía/rúbrica, integridad, evidencia o render.
