@@ -32,3 +32,15 @@ Entregar:
 ## QA
 No inventar requisitos no presentes en la guía.
 No usar APA para justificar secciones que la actividad no pide.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+
+- `outputs.requirements`: requisitos identificados y su autoridad.
+- `outputs.rubric_map`: criterio → evidencia esperada.
+- `outputs.deliverables`: artefactos y condiciones de entrega.
+- `findings`: contradicciones, riesgos y requisitos críticos.
+- `gaps`: guía/rúbrica/instrucciones ausentes o ambiguas.
+- `next_recommended`: `academic-template-selector` y routing posterior.
+- `critical_gate: fail` si un requisito obligatorio no puede determinarse de forma fiable y es necesario para construir/validar el entregable.
