@@ -69,17 +69,23 @@
 - Few-shot examples de alto valor centrados en routing e integridad.
 - Suite de aceptación específica del adapter ChatGPT.
 - Suite adversarial para referencias inventadas, falsa readiness, prompt injection y evasión de detectores.
-- Validación estática del paquete; la ejecución en una instancia real de Custom GPT debe completarse antes de anunciar un deployment público validado.
+- Distribución reproducible de las 16 Skills como ZIP derivado mediante `scripts/package_skills.py`.
+- Validación estática del paquete; runtime real permanece pendiente hasta desplegar el Custom GPT.
 
-## v0.12 — Gemini / other platform adapters
-- Actualizar Gemini Gem desde el core y contrato actuales.
-- Definir manifest/instalación/context strategy equivalentes cuando la plataforma lo requiera.
-- Adapter adicional (por ejemplo Spark) solo cuando su forma de instalación esté suficientemente definida.
-- Pruebas cruzadas de autoridad, routing, integridad y readiness.
+## v0.12 — Gemini / cross-platform adapter
+- Gemini Gem actualizado desde el core y contrato actuales.
+- `GEM_CONFIG.md`, `KNOWLEDGE_MANIFEST.md`, `INSTALLATION.md` y few-shot examples.
+- Knowledge por upload local o Drive con GitHub como fuente canónica.
+- 20 casos de aceptación específicos de Gemini.
+- 15 casos de consistencia conductual ChatGPT ↔ Gemini.
+- Verificación de comportamiento de producto contra documentación oficial de Gemini.
+- Runtime real del Gem queda pendiente hasta configurar una instancia y ejecutar la suite.
+- No se añade Spark por nombre: un nuevo adapter solo entra cuando su modelo de instalación/conocimiento esté suficientemente definido.
 
 ## v0.13 — Declarative repository validation
 - Validador de estructura del repo.
 - Validación automática de VERSION/CHANGELOG/internal links/skill contract/registry.
+- Validación de inventario/distribución de Skills.
 - GitHub Actions solo para linting/consistencia del framework declarativo.
 - Tras estabilizar checks, considerar `Require status checks` en `main`.
 
@@ -92,6 +98,7 @@
 ## v1.0 — Stable academic-agent framework
 - Core y Skill Contract v1 estables.
 - Adaptadores principales utilizables y documentados.
+- Runtime acceptance de plataformas principales documentado o claramente delimitado.
 - Corpus E2E suficiente para los artefactos/instituciones declarados.
 - Semántica de orquestación/readiness estable.
 - Política de releases y compatibilidad.
