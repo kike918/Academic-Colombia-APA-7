@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.9.0 - 2026-08-30
+
+### Added
+- MIT License para uso, modificación y distribución pública del framework.
+- `core/ORCHESTRATION.md` como flujo canónico y portable entre skills.
+- Skill `academic-workflow-orchestrator` para routing condicional por tipo de trabajo/artefacto.
+- `CONTRIBUTING.md` con política branch/fork + pull request.
+- `docs/REPOSITORY-GOVERNANCE.md` con política de `main`, merges y configuración recomendada de ruleset.
+
+### Changed
+- README actualizado al estado real del framework.
+- Roadmap actualizado desde v0.1 hasta v1.0.
+- Se establece explícitamente que n8n, webhooks, memoria personal externa y runtimes autónomos no son dependencias del core antes de v1.0.
+
 ## 0.8.0 - 2026-08-30
 
 ### Added
