@@ -83,17 +83,20 @@
 - No se añade Spark por nombre: un nuevo adapter solo entra cuando su modelo de instalación/conocimiento esté suficientemente definido.
 
 ## v0.13 — Declarative repository validation
-- Validador de estructura del repo.
-- Validación automática de VERSION/CHANGELOG/internal links/skill contract/registry.
-- Validación de inventario/distribución de Skills.
-- GitHub Actions solo para linting/consistencia del framework declarativo.
-- Tras estabilizar checks, considerar `Require status checks` en `main`.
+- `scripts/validate_repo.py` valida estructura canónica del framework.
+- Validación automática de VERSION/CHANGELOG, links internos, Skill Contract, registry e inventario/distribución.
+- `.github/workflows/validate.yml` ejecuta el lint declarativo y verifica que los paquetes de Skills puedan generarse.
+- 20 casos de aceptación de validación estructural.
+- CI queda delimitado como guardrail de consistencia; no sustituye aceptación académica, E2E ni runtime.
+- Después de observar estabilidad del check en PRs reales, se podrá habilitar `Require status checks` en el ruleset de `main`.
 
-## v0.14 — Empirical coverage
+## v0.14 — Empirical coverage / pre-release evidence
 - Más actividades SENA reales anonimizadas antes de crear subperfiles.
 - Casos reales XLSX, PPTX, infografía y video/web.
+- Completar runtime acceptance de Custom GPT y Gemini Gem cuando las instancias estén disponibles.
 - Evaluar `academic-integrity-review` solo si los casos reales demuestran un gap; no construir funciones de evasión de detectores.
 - Añadir `institutions/TEMPLATE.md` para futuras extensiones sin ampliar instituciones todavía.
+- Producir un pre-release readiness report para decidir v1.0.
 
 ## v1.0 — Stable academic-agent framework
 - Core y Skill Contract v1 estables.
