@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.8.0 - 2026-08-30
+
+### Added
+- Skill `academic-document-auditor` para auditoría académica, APA/institucional y técnica de documentos terminados.
+- Skill `academic-document-repair` para regeneración controlada de documentos a partir de una auditoría validada.
+- Workflow `DOCUMENT-AUDIT-REPAIR-WORKFLOW` con modos conservative, evidence-backed y full-revision.
+- Casos end-to-end basados en un documento UNAD real anonimizado.
+
+### Changed
+- Las correcciones se clasifican como `SAFE_AUTOFIX`, `EVIDENCE_REQUIRED` o `CONTENT_DECISION`.
+- Para documentos cuyo contenido ya fue evaluado positivamente, el modo de reparación predeterminado es `conservative`.
+- DOCX exige render, inspección visual de todas las páginas y re-render antes de declararse listo.
+
 ## 0.7.0 - 2026-08-30
 
 ### Added
