@@ -1,60 +1,51 @@
 # Academic Colombia — APA 7
 
-**Academic Colombia** es un framework modular de skills para asistentes de IA orientado a planificar, investigar, construir, auditar y corregir entregables académicos en el contexto colombiano, con foco inicial en **APA 7, UNAD y SENA**.
+**Academic Colombia** es un framework académico declarativo y modular para asistentes de IA. Ayuda a analizar, investigar, construir, auditar y revisar entregables académicos con foco inicial en **APA 7, UNAD y SENA**.
 
-El repositorio es la **fuente canónica**. Las implementaciones en ChatGPT, Gemini u otras plataformas deben consumir esta lógica sin crear reglas paralelas.
+No es una aplicación tradicional ni un único prompt gigante. El repositorio organiza conocimiento, perfiles institucionales, Skills, routing, evidencia, QA, adapters y pruebas de aceptación para que un asistente pueda aplicar un flujo académico consistente.
 
-> **Principio central:** la guía y la rúbrica gobiernan el trabajo; APA y las reglas institucionales ayudan a implementarlo correctamente, pero nunca reemplazan requisitos explícitos de la actividad.
-
-## ¿Qué problema resuelve?
-
-Academic Colombia evita que un asistente académico funcione como un único prompt gigante. Divide el trabajo en capacidades pequeñas, auditables y reutilizables:
-
-- analizar guías y rúbricas;
-- seleccionar la estructura adecuada;
-- investigar y evaluar fuentes;
-- mapear afirmaciones a evidencia;
-- gestionar citas y referencias;
-- aplicar APA 7 y perfiles institucionales;
-- analizar datos cuantitativos;
-- revisar tablas y figuras;
-- validar DOCX, XLSX, PPTX, video, web, infografías y gráficos;
-- auditar documentos terminados;
-- corregirlos sin alterar silenciosamente contenido validado;
-- ejecutar QA final antes de declarar un entregable listo.
+> **Principio central:** la guía y la rúbrica gobiernan el trabajo. APA y las reglas institucionales ayudan a implementarlo correctamente, pero no reemplazan requisitos explícitos de la actividad.
 
 ## Estado
 
-**Versión actual:** `0.14.1`
+**Versión estable:** `1.0.0`
 
-Academic Colombia está en **pre-release**. El core, las 16 Skills, la orquestación, la distribución, los adapters ChatGPT/Gemini y la validación declarativa del repositorio están construidos.
+v1.0.0 estabiliza:
 
-La evidencia empírica real ya incluye flujos UNAD y SENA. En SENA se validó un caso financiero real con versión previa problemática, informe DOCX corregido, presentación visual y guía de grabación. La cobertura continúa diferenciando claramente **capacidad implementada, fixture de aceptación, ejecución empírica real y runtime de plataforma**; XLSX, PPTX nativo, video reproducido y estadística todavía conservan límites explícitos.
+- Skill Contract v1;
+- jerarquía de autoridad;
+- routing y readiness;
+- cadena claim → evidence → source → citation;
+- critical gates;
+- separación core / platform adapters;
+- 16 Skills nativas;
+- perfiles UNAD y SENA;
+- distribución reproducible;
+- validación declarativa del repositorio.
 
-➡️ [`docs/V0.14-PRE-RELEASE-READINESS.md`](docs/V0.14-PRE-RELEASE-READINESS.md) · [`tests/EMPIRICAL_EVIDENCE_REGISTRY.md`](tests/EMPIRICAL_EVIDENCE_REGISTRY.md)
+La cobertura empírica es real pero deliberadamente acotada. El registro distingue entre capacidad implementada, fixture de aceptación, ejecución real y runtime de plataforma.
 
-## Skills
+➡️ [Release readiness](docs/V1.0-RELEASE-READINESS.md) · [Empirical Evidence Registry](tests/EMPIRICAL_EVIDENCE_REGISTRY.md) · [Compatibility policy](docs/COMPATIBILITY-POLICY.md)
 
-Academic Colombia incluye actualmente **16 skills nativas**.
+## Qué resuelve
 
-| Área | Skills principales |
-|---|---|
-| Orquestación | `academic-workflow-orchestrator` |
-| Requisitos y estructura | `academic-requirements-analyzer`, `academic-template-selector` |
-| Investigación y evidencia | `academic-research-ideation`, `academic-source-evaluator`, `academic-evidence-mapper`, `academic-citation-manager` |
-| Análisis | `academic-statistical-analysis`, `academic-critical-review` |
-| APA y artefactos | `apa7-academic-style`, `academic-tables-figures`, `academic-artifact-validator` |
-| Auditoría y reparación | `academic-document-auditor`, `academic-document-repair` |
-| Gate final | `academic-final-review` |
-| Fallback controlado | `external-reference-resolver` |
+Academic Colombia divide el trabajo académico en capacidades pequeñas y auditables:
 
-➡️ **[Ver directorio completo de skills](docs/SKILLS-DIRECTORY.md)**
-
-Cada skill conserva su definición detallada en `skills/<skill-name>/SKILL.md`.
+- leer guías y rúbricas;
+- decidir estructura y artefacto;
+- investigar y evaluar fuentes;
+- verificar hechos actuales;
+- mapear afirmaciones a evidencia;
+- gestionar citas y referencias;
+- aplicar APA 7;
+- adaptar reglas UNAD/SENA;
+- revisar tablas, figuras y análisis cuantitativo;
+- validar DOCX, XLSX, PPTX, video, web, infografías y gráficos;
+- auditar documentos terminados;
+- reparar sin alterar silenciosamente contenido validado;
+- ejecutar QA final antes de declarar un entregable listo.
 
 ## Cómo funciona
-
-El flujo no ejecuta todas las skills por defecto. `academic-workflow-orchestrator` selecciona las capacidades necesarias según la actividad, institución, artefacto y estado del trabajo.
 
 ```text
 INPUT
@@ -63,17 +54,17 @@ requirements analyzer
   ↓
 template selector
   ↓
-capability check
+capability / evidence check
   ↓
-research / evidence
+research + source evaluation
   ↓
-draft or artifact
+evidence mapping + citations
   ↓
-APA / citations / method
+draft / artifact
+  ↓
+APA / method / artifact validation
   ↓
 critical review
-  ↓
-artifact validation
   ↓
 document audit / repair when applicable
   ↓
@@ -82,11 +73,50 @@ final review
 READY / NOT READY / USER DECISION REQUIRED
 ```
 
-El routing canónico está definido en [`core/ORCHESTRATION.md`](core/ORCHESTRATION.md).
+No todas las Skills se ejecutan siempre. `academic-workflow-orchestrator` selecciona únicamente las capacidades necesarias para la actividad.
 
-## Contrato entre skills
+➡️ [Routing canónico](core/ORCHESTRATION.md)
 
-Todas las skills interoperables usan el contrato definido en [`core/SKILL-CONTRACT.md`](core/SKILL-CONTRACT.md):
+## Jerarquía de autoridad
+
+Cuando exista conflicto entre reglas:
+
+1. instrucción explícita del usuario;
+2. guía oficial de la actividad;
+3. rúbrica o instrumento de evaluación;
+4. instrucciones del tutor/docente;
+5. reglas institucionales;
+6. APA 7;
+7. convenciones académicas generales.
+
+Esta jerarquía opera junto con los gates de integridad y evidencia del core; una instrucción no convierte automáticamente una afirmación falsa o una fuente inventada en válida.
+
+## Skills
+
+Academic Colombia incluye **16 Skills nativas**.
+
+| Área | Skills |
+|---|---|
+| Orquestación | `academic-workflow-orchestrator` |
+| Requisitos / estructura | `academic-requirements-analyzer`, `academic-template-selector` |
+| Investigación / evidencia | `academic-research-ideation`, `academic-source-evaluator`, `academic-evidence-mapper`, `academic-citation-manager` |
+| Análisis | `academic-statistical-analysis`, `academic-critical-review` |
+| APA / artefactos | `apa7-academic-style`, `academic-tables-figures`, `academic-artifact-validator` |
+| Auditoría / reparación | `academic-document-auditor`, `academic-document-repair` |
+| Gate final | `academic-final-review` |
+| Fallback | `external-reference-resolver` |
+
+➡️ [Directorio completo de Skills](docs/SKILLS-DIRECTORY.md)
+
+Cada Skill mantiene su fuente canónica en:
+
+```text
+skills/<skill-name>/SKILL.md
+```
+
+## Skill Contract v1
+
+Las Skills interoperables usan:
 
 ```yaml
 skill: skill-name
@@ -99,158 +129,117 @@ confidence: high | medium | low
 critical_gate: pass | fail | not_applicable
 ```
 
-Un `critical_gate: fail` no puede ser compensado por un promedio alto de otros criterios.
+Un `critical_gate: fail` no puede ser compensado por un buen promedio en otros criterios.
 
-## Jerarquía de autoridad
+➡️ [Skill Contract](core/SKILL-CONTRACT.md)
 
-Cuando exista conflicto entre reglas, se aplica este orden:
-
-1. instrucción explícita del usuario;
-2. guía oficial de la actividad;
-3. rúbrica o instrumento de evaluación;
-4. instrucciones del tutor/docente;
-5. reglas institucionales;
-6. APA 7;
-7. convenciones académicas generales.
-
-## Contextos institucionales
+## Perfiles institucionales
 
 ### UNAD
 
-El perfil UNAD incorpora reglas verificadas de APA 7 institucional, plantilla y comportamiento esperado para actividades, guías y rúbricas.
+Perfil institucional con fuentes verificadas, reglas de plantilla y comportamiento sensible a guía/rúbrica.
 
-➡️ [`institutions/UNAD.md`](institutions/UNAD.md)
+➡️ [UNAD](institutions/UNAD.md)
 
 ### SENA
 
-El perfil SENA adapta el flujo a competencias, resultados de aprendizaje, evidencias, criterios e instrumentos sin heredar automáticamente reglas UNAD.
+Perfil separado, orientado a resultados de aprendizaje, evidencias, criterios e instrumentos. No hereda automáticamente reglas UNAD.
 
-La cobertura empírica ya incluye un workflow real de análisis financiero con informe escrito, revisión crítica, presentación visual y soporte para video. Esto aumenta la confianza en el perfil sin pretender cubrir todos los programas o Centros de Formación.
+➡️ [SENA](institutions/SENA.md)
 
-➡️ [`institutions/SENA.md`](institutions/SENA.md)
+Las coberturas UNAD/SENA son **bounded coverage**: suficientes para uso estable del framework, no una afirmación de que todos los centros, programas, tutores o plantillas locales hayan sido probados.
 
-## Artefactos soportados
+## Evidencia empírica
 
-Academic Colombia trata APA y QA de forma sensible al artefacto:
+Antes de v1.0 el framework fue probado con trabajos reales anonimizados, incluyendo:
 
-- **DOCX/PDF académico:** formato, estructura, citas, referencias, tablas/figuras y render visual;
-- **XLSX:** fórmulas, unidades, fuentes, estructura, gráficos y errores;
-- **PPTX:** jerarquía, legibilidad, evidencia, citación y atribución;
-- **infografías:** factualidad, jerarquía, fuentes y atribución;
-- **video/YouTube:** autoría, acceso, relación con la evidencia y referencia cuando aplica;
-- **landing/web:** acceso, contenido requerido, evidencia y uso como fuente;
-- **gráficos:** datos, escala, etiquetas, unidades, fuente y lectura no engañosa.
+- auditoría/reparación de DOCX;
+- informes UNAD y SENA;
+- presentaciones visuales;
+- actividades de comercio internacional y normativa;
+- diseño técnico de smart contract;
+- workbook XLSX contable con reconciliación entre diario, cuentas T, balance y comprobante SIIGO;
+- casos negativos de fuentes débiles, cifras mal interpretadas, periodos no comparables y datos obsoletos.
 
-➡️ [`docs/ARTIFACT-VALIDATION-MATRIX.md`](docs/ARTIFACT-VALIDATION-MATRIX.md)
-
-## Auditoría y reparación documental
-
-Para documentos existentes se usa un flujo separado:
+Esto permitió validar una regla clave:
 
 ```text
-document auditor
-   ↓
-SAFE_AUTOFIX / EVIDENCE_REQUIRED / CONTENT_DECISION
-   ↓
-authorized repair
-   ↓
-render + visual QA
-   ↓
-final review
+Visual PASS + Evidence FAIL = NOT READY
 ```
 
-Esto permite corregir implementación APA/Word sin reescribir innecesariamente contenido académico ya validado.
+➡️ [Registro empírico](tests/EMPIRICAL_EVIDENCE_REGISTRY.md)
 
-➡️ [`docs/DOCUMENT-AUDIT-REPAIR-WORKFLOW.md`](docs/DOCUMENT-AUDIT-REPAIR-WORKFLOW.md)
+## Artefactos
 
-## Uso en plataformas de IA
+El QA es sensible al tipo de artefacto:
+
+- **DOCX/PDF** — estructura, APA, referencias, tablas/figuras, render;
+- **XLSX** — fórmulas, unidades, consistencia, gráficos, reconciliación;
+- **PPTX / presentaciones** — jerarquía, legibilidad, evidencia, citación;
+- **infografías** — síntesis, factualidad, fuentes, atribución;
+- **video** — evidencia, acceso, autoría y referencia cuando aplica;
+- **web/landing** — contenido requerido, acceso y trazabilidad;
+- **gráficos** — escala, etiquetas, unidades y fuente.
+
+➡️ [Artifact Validation Matrix](docs/ARTIFACT-VALIDATION-MATRIX.md)
+
+## Plataformas
 
 El core es platform-neutral.
 
 ### ChatGPT
 
-`platforms/chatgpt-gpt/` incluye Instructions, configuración, Knowledge Manifest, instalación, estrategia de contexto, few-shot examples y suites específicas.
+`platforms/chatgpt-gpt/` contiene Instructions, configuración, Knowledge Manifest, estrategia de contexto, instalación y suites específicas.
 
-La distribución de Skills está documentada en [`distribution/`](distribution/README.md) y puede generar 16 ZIP individuales + un bundle desde la fuente canónica.
+La distribución de las 16 Skills puede generarse como ZIPs individuales y bundle reproducible.
 
-La validación estática es PASS; runtime en un Custom GPT real permanece PENDING.
+➡️ [Instalar Skills](distribution/INSTALL-CHATGPT-SKILLS.md) · [Custom GPT adapter](platforms/chatgpt-gpt/INSTALLATION.md)
+
+**Runtime real del Custom GPT:** todavía `NOT_CLAIMED` hasta ejecutar una instancia real.
 
 ### Gemini
 
-`platforms/gemini/` incluye:
+`platforms/gemini/` contiene el adapter de Gem, Knowledge Manifest, instalación y casos cross-platform.
 
-- `GEM_INSTRUCTIONS.md`;
-- `GEM_CONFIG.md`;
-- `KNOWLEDGE_MANIFEST.md`;
-- `INSTALLATION.md`;
-- `FEW-SHOT-EXAMPLES.md`.
+➡️ [Gemini adapter](platforms/gemini/INSTALLATION.md)
 
-El adapter soporta Knowledge por snapshot local o mediante archivos de Google Drive cuando la cuenta lo permita. GitHub sigue siendo la fuente canónica; Drive actúa solo como capa de distribución/sincronización.
+**Runtime real del Gem:** todavía `NOT_CLAIMED` hasta ejecutar una instancia real.
 
-La validación estática es PASS; runtime en un Gem real permanece PENDING.
+## Testing y CI
 
-### Otras plataformas
+El repositorio incluye suites declarativas para:
 
-Se añadirá un adapter solo cuando la forma de instrucciones, Knowledge/archivos y despliegue de la plataforma esté suficientemente definida. No se crean adapters nominales sin una superficie real que validar.
+- APA;
+- UNAD/SENA;
+- research/evidence;
+- Skill Contract;
+- routing;
+- artefactos;
+- auditoría/reparación;
+- distribución;
+- ChatGPT/Gemini;
+- adversarial prompts;
+- evidencia empírica.
 
-## Cómo usar el repositorio
+`.github/workflows/validate.yml` ejecuta validación estructural del framework: VERSION/CHANGELOG, links, manifests, Skills, contratos, registry y packaging.
 
-### Para leer o reutilizar una skill
+CI no decide si un argumento académico es verdadero; protege la consistencia del framework.
 
-1. abre [`docs/SKILLS-DIRECTORY.md`](docs/SKILLS-DIRECTORY.md);
-2. identifica la capacidad necesaria;
-3. abre el `SKILL.md` correspondiente;
-4. incorpora esa skill al sistema/agente compatible;
-5. conserva `core/ORCHESTRATION.md`, `core/SKILL-CONTRACT.md` y los perfiles institucionales relevantes como contexto común.
-
-### Para instalar las Skills en ChatGPT
-
-Empieza por:
-
-[`distribution/INSTALL-CHATGPT-SKILLS.md`](distribution/INSTALL-CHATGPT-SKILLS.md)
-
-### Para instalar el adapter ChatGPT
-
-Empieza por:
-
-[`platforms/chatgpt-gpt/INSTALLATION.md`](platforms/chatgpt-gpt/INSTALLATION.md)
-
-### Para instalar el Gem
-
-Empieza por:
-
-[`platforms/gemini/INSTALLATION.md`](platforms/gemini/INSTALLATION.md)
-
-### Para implementar Academic Colombia completo
-
-Usa como base:
-
-```text
-core/
-institutions/
-templates/
-skills/
-quality/
-external-references/
-```
-
-Los archivos de `platforms/` son adapters, no la fuente de verdad.
-
-## Arquitectura del repositorio
+## Arquitectura
 
 ```text
 Academic-Colombia-APA-7/
-├── core/                 # reglas y contratos neutrales de plataforma
-├── institutions/         # perfiles UNAD y SENA
-├── templates/            # perfiles/plantillas académicas
-├── skills/               # capacidades modulares
-├── distribution/         # empaquetado reproducible de Skills
-├── external-references/  # fallback externo controlado
-├── quality/              # gates de QA académico
-├── tests/                # aceptación, regresión, routing, E2E y evidencia empírica
-├── platforms/            # adapters para asistentes
-├── scripts/              # utilidades de distribución/validación
-├── docs/                 # arquitectura, workflows y documentación
+├── core/
+├── institutions/
+├── templates/
+├── skills/
+├── distribution/
+├── external-references/
+├── quality/
+├── tests/
+├── platforms/
+├── scripts/
+├── docs/
 ├── LICENSE
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
@@ -258,67 +247,38 @@ Academic-Colombia-APA-7/
 └── README.md
 ```
 
-➡️ [Arquitectura detallada](docs/ARCHITECTURE.md) · [Roadmap](docs/ROADMAP.md) · [Academic QA](quality/ACADEMIC-QA.md)
+➡️ [Arquitectura](docs/ARCHITECTURE.md) · [Roadmap](docs/ROADMAP.md)
 
-## Testing
+## Compatibilidad y releases
 
-El repositorio incluye suites para:
+Desde v1.0, Semantic Versioning se aplica al **comportamiento observable** del framework, no solo a los archivos.
 
-- motor APA;
-- compatibilidad UNAD;
-- templates;
-- research skills;
-- referencias externas;
-- validación de artefactos;
-- auditoría/reparación documental;
-- Skill Contract;
-- routing de orquestación;
-- escenarios E2E;
-- distribución de Skills;
-- adapter ChatGPT y casos adversariales;
-- adapter Gemini;
-- consistencia conductual cross-platform;
-- validación declarativa del repositorio;
-- registro y promoción controlada de evidencia empírica real.
+Un cambio de Markdown que rompa routing, readiness, autoridad o Skill Contract puede ser un cambio MAJOR aunque no exista código ejecutable.
 
-Los casos distinguen explícitamente entre especificación declarativa, pruebas realmente ejecutadas y validaciones todavía pendientes de runtime.
-
-## Fuentes externas
-
-Las fuentes externas no se importan silenciosamente. Se evalúan y registran por autoridad, vigencia, licencia y uso permitido.
-
-➡️ [`external-references/REGISTRY.md`](external-references/REGISTRY.md)
-
-La clasificación canónica es:
-
-- **A:** autoridad primaria oficial;
-- **B:** universidad / fuente académica fuerte;
-- **C:** referencia técnica o metodológica;
-- **D:** guía secundaria especializada;
-- **E:** producto, blog, vendor o comunidad.
+➡️ [Compatibility and Release Policy](docs/COMPATIBILITY-POLICY.md)
 
 ## Documentación web
 
-`docs/index.md` contiene una portada mínima preparada para **GitHub Pages**. Su objetivo es explicar el proyecto, sus reglas básicas y cómo navegar las skills sin reproducir un manual completo de APA.
+`docs/index.md` es una portada mínima compatible con GitHub Pages. La web debe ser una vista de la documentación canónica, no una segunda fuente de verdad.
 
-La documentación web debe seguir siendo una vista de los Markdown canónicos del repositorio, no una segunda fuente de verdad.
-
-➡️ [`docs/index.md`](docs/index.md) · [`docs/DOCUMENTATION-STRATEGY.md`](docs/DOCUMENTATION-STRATEGY.md)
+➡️ [Landing Markdown](docs/index.md)
 
 ## Gobernanza
 
-- `main` es la rama canónica y está protegida por ruleset;
-- los cambios llegan mediante branch/fork + pull request;
-- no existe bypass rutinario de la protección;
-- los ejemplos académicos reales deben anonimizarse antes de convertirse en tests;
-- cambios de comportamiento requieren tests y actualización de versión/changelog.
+- `main` es la rama canónica;
+- cambios por branch/fork + pull request;
+- linear history;
+- conversaciones de PR deben resolverse;
+- no se permiten bypass rutinarios;
+- cambios de comportamiento requieren pruebas y release note;
+- artefactos reales solo se registran de forma anonimizada.
 
-➡️ [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`docs/REPOSITORY-GOVERNANCE.md`](docs/REPOSITORY-GOVERNANCE.md)
+➡️ [Repository Governance](docs/REPOSITORY-GOVERNANCE.md)
 
 ## Licencia
 
-Academic Colombia se distribuye bajo la **MIT License** para el contenido original del proyecto.
+El contenido original de Academic Colombia se distribuye bajo **MIT License**.
 
-Los materiales, normas, marcas y recursos externos o institucionales conservan sus propios derechos y condiciones. La licencia no otorga acceso de escritura al repositorio ni implica afiliación o respaldo institucional.
+Materiales, marcas, normas y recursos de terceros o instituciones conservan sus propios derechos. La licencia no implica afiliación ni respaldo de APA, UNAD, SENA u otras organizaciones mencionadas.
 
-➡️ [`LICENSE`](LICENSE) · [`docs/LICENSE-SCOPE.md`](docs/LICENSE-SCOPE.md)
+➡️ [LICENSE](LICENSE) · [License scope](docs/LICENSE-SCOPE.md)
