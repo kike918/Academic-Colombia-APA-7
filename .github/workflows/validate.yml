@@ -1,0 +1,31 @@
+name: Validate Academic Colombia
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: declarative-validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate repository structure
+        run: python scripts/validate_repo.py
+
+      - name: Verify Skills packages can be generated
+        run: |
+          python scripts/package_skills.py
+          test "$(find dist/individual -maxdepth 1 -name '*.zip' | wc -l)" -gt 0
