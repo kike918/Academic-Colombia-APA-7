@@ -25,7 +25,7 @@ Academic Colombia evita que un asistente académico funcione como un único prom
 
 ## Estado
 
-**Versión estable actual:** `0.10.1`
+**Versión estable actual:** `0.10.2`
 
 El motor académico ya cuenta con orquestación declarativa, contrato común entre skills, trazabilidad de evidencia, gates críticos, pruebas de routing y escenarios E2E. Los adapters de plataforma aún están en proceso de empaquetado y validación.
 
@@ -259,19 +259,13 @@ La clasificación canónica es:
 - **D:** guía secundaria especializada;
 - **E:** producto, blog, vendor o comunidad.
 
-## Documentación web / landing
+## Documentación web
 
-Por ahora **no existe una landing independiente**. La estrategia actual es mantener README + `/docs` como experiencia pública primaria para evitar duplicar contenido.
+`docs/index.md` contiene una portada mínima preparada para **GitHub Pages**. Su objetivo es explicar el proyecto, sus reglas básicas y cómo navegar las skills sin reproducir un manual completo de APA.
 
-GitHub Pages se evaluará cuando el proyecto llegue a una etapa de adopción pública más amplia y exista necesidad real de:
+La documentación web debe seguir siendo una vista de los Markdown canónicos del repositorio, no una segunda fuente de verdad.
 
-- navegación multi-página;
-- instalación guiada por plataforma;
-- búsqueda de documentación;
-- ejemplos y tutoriales públicos;
-- releases estables v1.x.
-
-La landing, si se crea, deberá generarse desde la documentación canónica del repo y no convertirse en una segunda fuente de verdad.
+➡️ [`docs/index.md`](docs/index.md) · [`docs/DOCUMENTATION-STRATEGY.md`](docs/DOCUMENTATION-STRATEGY.md)
 
 ## Gobernanza
 
@@ -285,8 +279,8 @@ La landing, si se crea, deberá generarse desde la documentación canónica del 
 
 ## Licencia
 
-Academic Colombia se distribuye bajo la **MIT License**.
+Academic Colombia se distribuye bajo la **MIT License** para el contenido original del proyecto.
 
-Se permite usar, copiar, modificar, distribuir y adaptar el proyecto manteniendo el aviso de copyright y la licencia correspondiente.
+Los materiales, normas, marcas y recursos externos o institucionales conservan sus propios derechos y condiciones. La licencia no otorga acceso de escritura al repositorio ni implica afiliación o respaldo institucional.
 
-➡️ [`LICENSE`](LICENSE)
+➡️ [`LICENSE`](LICENSE) · [`docs/LICENSE-SCOPE.md`](docs/LICENSE-SCOPE.md)
