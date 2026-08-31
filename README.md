@@ -25,11 +25,13 @@ Academic Colombia evita que un asistente académico funcione como un único prom
 
 ## Estado
 
-**Versión actual:** `0.12.0`
+**Versión actual:** `0.14.0`
 
-El core académico está estabilizado. El repositorio incluye paquetes de adapter para **ChatGPT** y **Gemini**, además de distribución reproducible de las 16 Skills nativas.
+Academic Colombia está en **pre-release**. El core, las 16 Skills, la orquestación, la distribución, los adapters ChatGPT/Gemini y la validación declarativa del repositorio están construidos.
 
-La validación estática y las especificaciones cross-platform están completas. La ejecución de las suites en un Custom GPT y un Gem reales sigue siendo el gate pendiente antes de anunciar deployments públicos como validados en runtime.
+La fase actual separa explícitamente **capacidad implementada, fixture de aceptación, ejecución empírica real y runtime de plataforma**. DOCX/UNAD tiene la mayor profundidad empírica actual; otros artefactos e instituciones mantienen límites visibles en lugar de presentarse como exhaustivamente validados.
+
+➡️ [`docs/V0.14-PRE-RELEASE-READINESS.md`](docs/V0.14-PRE-RELEASE-READINESS.md) · [`tests/EMPIRICAL_EVIDENCE_REGISTRY.md`](tests/EMPIRICAL_EVIDENCE_REGISTRY.md)
 
 ## Skills
 
@@ -125,6 +127,12 @@ El perfil SENA adapta el flujo a competencias, resultados de aprendizaje, eviden
 
 ➡️ [`institutions/SENA.md`](institutions/SENA.md)
 
+### Extensiones futuras
+
+Nuevas instituciones deben partir de fuentes verificadas y casos reales, no de generalizaciones.
+
+➡️ [`institutions/TEMPLATE.md`](institutions/TEMPLATE.md)
+
 ## Artefactos soportados
 
 Academic Colombia trata APA y QA de forma sensible al artefacto:
@@ -159,6 +167,17 @@ Esto permite corregir implementación APA/Word sin reescribir innecesariamente c
 
 ➡️ [`docs/DOCUMENT-AUDIT-REPAIR-WORKFLOW.md`](docs/DOCUMENT-AUDIT-REPAIR-WORKFLOW.md)
 
+## Evidencia empírica
+
+El repositorio distingue cuatro estados:
+
+- `EXECUTED`: caso real anonimizado ejecutado y revisado;
+- `PARTIAL`: caso real utilizado, pero sin cubrir todos los gates declarados;
+- `FIXTURE_READY`: especificación preparada sin reclamar ejecución real;
+- `NOT_CLAIMED`: no se reclama todavía cobertura empírica/runtime.
+
+➡️ [`tests/EMPIRICAL_EVIDENCE_REGISTRY.md`](tests/EMPIRICAL_EVIDENCE_REGISTRY.md) · [`tests/EMPIRICAL_CASE_TEMPLATE.md`](tests/EMPIRICAL_CASE_TEMPLATE.md)
+
 ## Uso en plataformas de IA
 
 El core es platform-neutral.
@@ -169,7 +188,7 @@ El core es platform-neutral.
 
 La distribución de Skills está documentada en [`distribution/`](distribution/README.md) y puede generar 16 ZIP individuales + un bundle desde la fuente canónica.
 
-La validación estática es PASS; runtime en un Custom GPT real permanece PENDING.
+La validación estática es PASS; runtime en un Custom GPT real permanece `NOT_CLAIMED` hasta ejecutar la suite en una instancia real.
 
 ### Gemini
 
@@ -183,7 +202,7 @@ La validación estática es PASS; runtime en un Custom GPT real permanece PENDIN
 
 El adapter soporta Knowledge por snapshot local o mediante archivos de Google Drive cuando la cuenta lo permita. GitHub sigue siendo la fuente canónica; Drive actúa solo como capa de distribución/sincronización.
 
-La validación estática es PASS; runtime en un Gem real permanece PENDING.
+La validación estática es PASS; runtime en un Gem real permanece `NOT_CLAIMED` hasta ejecutar la suite en una instancia real.
 
 ### Otras plataformas
 
@@ -237,13 +256,13 @@ Los archivos de `platforms/` son adapters, no la fuente de verdad.
 ```text
 Academic-Colombia-APA-7/
 ├── core/                 # reglas y contratos neutrales de plataforma
-├── institutions/         # perfiles UNAD y SENA
+├── institutions/         # perfiles UNAD, SENA y template de extensión
 ├── templates/            # perfiles/plantillas académicas
 ├── skills/               # capacidades modulares
 ├── distribution/         # empaquetado reproducible de Skills
 ├── external-references/  # fallback externo controlado
 ├── quality/              # gates de QA académico
-├── tests/                # aceptación, regresión, routing y E2E
+├── tests/                # aceptación, regresión, routing, E2E y evidencia empírica
 ├── platforms/            # adapters para asistentes
 ├── scripts/              # utilidades de distribución/validación
 ├── docs/                 # arquitectura, workflows y documentación
@@ -256,7 +275,7 @@ Academic-Colombia-APA-7/
 
 ➡️ [Arquitectura detallada](docs/ARCHITECTURE.md) · [Roadmap](docs/ROADMAP.md) · [Academic QA](quality/ACADEMIC-QA.md)
 
-## Testing
+## Testing y validación
 
 El repositorio incluye suites para:
 
@@ -273,7 +292,9 @@ El repositorio incluye suites para:
 - distribución de Skills;
 - adapter ChatGPT y casos adversariales;
 - adapter Gemini;
-- consistencia conductual cross-platform.
+- consistencia conductual cross-platform;
+- consistencia estructural automática en GitHub Actions;
+- registro separado de evidencia empírica real.
 
 Los casos distinguen explícitamente entre especificación declarativa, pruebas realmente ejecutadas y validaciones todavía pendientes de runtime.
 
@@ -305,7 +326,8 @@ La documentación web debe seguir siendo una vista de los Markdown canónicos de
 - los cambios llegan mediante branch/fork + pull request;
 - no existe bypass rutinario de la protección;
 - los ejemplos académicos reales deben anonimizarse antes de convertirse en tests;
-- cambios de comportamiento requieren tests y actualización de versión/changelog.
+- cambios de comportamiento requieren tests y actualización de versión/changelog;
+- GitHub Actions valida consistencia estructural, no reemplaza juicio académico.
 
 ➡️ [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`docs/REPOSITORY-GOVERNANCE.md`](docs/REPOSITORY-GOVERNANCE.md)
 

@@ -88,24 +88,25 @@
 - `.github/workflows/validate.yml` ejecuta el lint declarativo y verifica que los paquetes de Skills puedan generarse.
 - 20 casos de aceptación de validación estructural.
 - CI queda delimitado como guardrail de consistencia; no sustituye aceptación académica, E2E ni runtime.
-- Después de observar estabilidad del check en PRs reales, se podrá habilitar `Require status checks` en el ruleset de `main`.
+- El check ya demostró failure → corrección → PASS en PR real.
 
 ## v0.14 — Empirical coverage / pre-release evidence
-- Más actividades SENA reales anonimizadas antes de crear subperfiles.
-- Casos reales XLSX, PPTX, infografía y video/web.
-- Completar runtime acceptance de Custom GPT y Gemini Gem cuando las instancias estén disponibles.
-- Evaluar `academic-integrity-review` solo si los casos reales demuestran un gap; no construir funciones de evasión de detectores.
-- Añadir `institutions/TEMPLATE.md` para futuras extensiones sin ampliar instituciones todavía.
-- Producir un pre-release readiness report para decidir v1.0.
+- `tests/EMPIRICAL_EVIDENCE_REGISTRY.md` separa `EXECUTED`, `PARTIAL`, `FIXTURE_READY` y `NOT_CLAIMED`.
+- `tests/EMPIRICAL_CASE_TEMPLATE.md` define cómo promover actividades reales anonimizadas a evidencia reusable.
+- `institutions/TEMPLATE.md` establece un patrón de extensión institucional basado en autoridad y evidencia.
+- `docs/V0.14-PRE-RELEASE-READINESS.md` delimita readiness, gaps reales y criterios mínimos para v1.0.
+- UNAD/DOCX mantiene la mayor profundidad empírica actual; SENA, XLSX, PPTX, video y estadística conservan límites explícitos.
+- Runtime de Custom GPT y Gemini Gem permanece no reclamado hasta ejecutar las instancias reales.
+- No se crea `academic-integrity-review` sin evidencia de un gap recurrente; evasión de detectores continúa fuera de alcance.
+- No se amplían instituciones por volumen antes de v1.0.
 
 ## v1.0 — Stable academic-agent framework
-- Core y Skill Contract v1 estables.
-- Adaptadores principales utilizables y documentados.
-- Runtime acceptance de plataformas principales documentado o claramente delimitado.
-- Corpus E2E suficiente para los artefactos/instituciones declarados.
-- Semántica de orquestación/readiness estable.
-- Política de releases y compatibilidad.
-- Documentación pública navegable.
+- Congelar core y Skill Contract v1 salvo defectos de release.
+- Definir política de releases y compatibilidad semántica para cambios declarativos.
+- Ejecutar auditoría final de repo, documentación, licencia, adapters y distribución.
+- Documentar runtime acceptance de ChatGPT/Gemini cuando las instancias estén disponibles, o mantener claramente `NOT_CLAIMED`.
+- Publicar release/tag estable con límites de cobertura explícitos.
+- Activar `Require status checks` para el check declarativo una vez confirmada estabilidad adicional en PR normal.
 
 ## Fuera de alcance antes de v1.0
 

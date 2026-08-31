@@ -26,6 +26,10 @@ REQUIRED_ROOT = [
     "core/SKILL-CONTRACT.md",
     "quality/ACADEMIC-QA.md",
     "distribution/SKILLS-MANIFEST.md",
+    "institutions/TEMPLATE.md",
+    "tests/EMPIRICAL_EVIDENCE_REGISTRY.md",
+    "tests/EMPIRICAL_CASE_TEMPLATE.md",
+    "docs/V0.14-PRE-RELEASE-READINESS.md",
 ]
 
 CONTRACT_MARKERS = ["Skill Contract v1", "critical_gate"]
