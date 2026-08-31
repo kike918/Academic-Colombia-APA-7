@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.7.0 - 2026-08-30
+
+### Added
+- Política formal de referencias externas y fallback controlado.
+- Registro aprobado de fuentes externas por clase de autoridad.
+- Registro específico de `K-Dense-AI/scientific-agent-skills` como referencia metodológica/técnica.
+- Skill `external-reference-resolver` para detectar gaps de cobertura nativa y seleccionar fallback externo.
+- 12 casos de aceptación para consumo externo, conflictos, licencias y promoción a skill nativa.
+
+### Changed
+- El consumo de fuentes externas deja de ser implícito: ahora exige clasificación, verificación, adaptación, trazabilidad y QA interno posterior.
+- Se establece una regla de promoción: fallbacks externos recurrentes deben evaluarse para convertirse en skills nativas.
+
 ## 0.6.0 - 2026-08-30
 
 ### Added
