@@ -6,7 +6,7 @@ Definir cómo se presenta Academic Colombia a usuarios, contribuidores y platafo
 
 ## Capas de documentación
 
-### 1. `README.md` — portada del proyecto
+### 1. `README.md` — portada del repositorio
 
 Debe responder rápidamente:
 - qué es Academic Colombia;
@@ -18,7 +18,21 @@ Debe responder rápidamente:
 
 El README no debe contener el detalle operativo completo de cada skill.
 
-### 2. `docs/SKILLS-DIRECTORY.md` — catálogo funcional
+### 2. `docs/index.md` — portada web mínima
+
+Es la entrada preparada para GitHub Pages.
+
+Debe ser más corta que el README y centrarse en:
+- propósito del framework;
+- reglas básicas de autoridad e integridad;
+- flujo general;
+- acceso al directorio de skills;
+- documentación principal;
+- licencia y estado.
+
+No debe convertirse en un manual teórico completo de APA.
+
+### 3. `docs/SKILLS-DIRECTORY.md` — catálogo funcional
 
 Es el índice humano de las skills.
 
@@ -31,54 +45,65 @@ Debe indicar:
 
 No reemplaza el `SKILL.md` individual.
 
-### 3. `skills/*/SKILL.md` — definición operativa
+### 4. `skills/*/SKILL.md` — definición operativa
 
 Es la fuente detallada de comportamiento de cada skill.
 
 Debe mantenerse compatible con `core/SKILL-CONTRACT.md` y `core/ORCHESTRATION.md`.
 
-### 4. `/docs` — arquitectura y workflows
+### 5. `/docs` — arquitectura y workflows
 
-Contiene documentación transversal: arquitectura, QA, validación de artefactos, gobernanza, roadmap, workflows y reportes de validación.
+Contiene documentación transversal: arquitectura, QA, validación de artefactos, gobernanza, roadmap, workflows, licencia/alcance y reportes de validación.
 
-### 5. Platform adapters
+### 6. Platform adapters
 
 `platforms/` contiene únicamente instrucciones y empaquetado específicos de cada plataforma. No debe redefinir reglas académicas canónicas.
 
-## Landing / GitHub Pages
+## GitHub Pages
 
 ### Decisión actual
 
-No crear una landing independiente en v0.10.x.
+Iniciar una **Page mínima** a partir de `docs/index.md`.
 
 Razones:
-- README + docs ya cubren descubrimiento y navegación;
-- una landing manual duplicaría contenido;
-- los adapters de plataforma aún están evolucionando;
-- el proyecto todavía está antes de v1.0.
+- el repositorio ya tiene suficiente estructura para que un lector externo se beneficie de una entrada simplificada;
+- la Page puede ayudar a entender el proyecto sin recorrer el árbol completo;
+- la portada puede explicar solo las reglas esenciales sin extenderse en teoría APA;
+- el contenido fuente permanece en Markdown dentro de `main`.
 
-### Cuándo sí crearla
+### Alcance inicial
 
-Evaluar GitHub Pages cuando se cumplan varios de estos criterios:
+La primera Page no necesita:
+- buscador;
+- framework visual complejo;
+- Docusaurus/MkDocs;
+- tutoriales extensos;
+- HTML mantenido manualmente;
+- copias de todos los `SKILL.md`.
+
+Puede publicarse directamente desde `main/docs` usando el render de GitHub Pages/Jekyll disponible en GitHub.
+
+### Evolución futura
+
+Evaluar un documentation builder cuando se cumplan varios de estos criterios:
 - release estable v1.x;
-- adopción pública por usuarios externos;
-- documentación suficientemente extensa para necesitar navegación multi-página;
-- instalación diferenciada para ChatGPT, Gemini, Sparks u otras plataformas;
-- necesidad de tutoriales, ejemplos y búsqueda;
-- necesidad de mostrar releases y compatibilidad.
+- adopción pública significativa;
+- documentación suficientemente extensa para necesitar navegación avanzada;
+- instalación diferenciada por plataforma;
+- necesidad de búsqueda, versionado de docs o tutoriales numerosos.
 
-### Regla de implementación futura
+En ese momento podrá evaluarse MkDocs, Material for MkDocs, Docusaurus u otra alternativa.
 
-Si se habilita GitHub Pages, debe generarse a partir de Markdown versionado en el repo mediante una herramienta de documentación (por ejemplo MkDocs, Material for MkDocs, Docusaurus u otra evaluada en ese momento).
-
-No mantener una landing HTML escrita manualmente que replique README/docs.
+## Regla de implementación
 
 ```text
 Markdown canónico
       ↓
-documentation builder
+README + docs
       ↓
 GitHub Pages
+      ↓
+future documentation builder if needed
 ```
 
 El sitio publicado es una vista del repositorio, no una nueva fuente de verdad.
@@ -86,5 +111,3 @@ El sitio publicado es una vista del repositorio, no una nueva fuente de verdad.
 ## Principio
 
 **Document once, render many.**
-
-La documentación debe mantenerse en GitHub y poder reutilizarse tanto en el README como en futuras experiencias web o adapters.
