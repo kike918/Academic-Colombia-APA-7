@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0 - 2026-08-30
+
+### Added
+- Registro de fuentes oficiales verificadas para UNAD y SENA.
+- Casos de regresión académica para validar futuras versiones del GPT, skills y Gem.
+- Advertencia explícita sobre el instructivo SENA APA 6 de 2019 como fuente obsoleta frente a APA 7.
+
+### Changed
+- Perfil UNAD anclado a la guía APA 7 institucional de 2023 y OVA complementario de 2025.
+- Perfil SENA anclado al instructivo institucional APA 7 de 2020 y evidencia de uso vigente en publicaciones SENA.
+- Política de autoridad documental reforzada para no generalizar reglas editoriales específicas.
+
 ## 0.1.0 - 2026-08-30
 
 ### Added
