@@ -25,9 +25,11 @@ Academic Colombia evita que un asistente académico funcione como un único prom
 
 ## Estado
 
-**Versión estable actual:** `0.10.2`
+**Versión actual:** `0.11.0`
 
-El motor académico ya cuenta con orquestación declarativa, contrato común entre skills, trazabilidad de evidencia, gates críticos, pruebas de routing y escenarios E2E. Los adapters de plataforma aún están en proceso de empaquetado y validación.
+El core académico está estabilizado y el repositorio ya incluye un **paquete de adapter para ChatGPT** con Instructions consolidadas, Knowledge Manifest, estrategia de contexto, instalación, few-shot examples y suites de aceptación/adversariales.
+
+La compatibilidad estática del paquete está validada. La ejecución completa de esos casos en una instancia real de Custom GPT sigue siendo el gate pendiente antes de anunciar un deployment público como validado en producción.
 
 ## Skills
 
@@ -163,11 +165,20 @@ El core es platform-neutral.
 
 ### ChatGPT
 
-El adapter actual se encuentra en:
+El paquete de adapter se encuentra en:
 
 `platforms/chatgpt-gpt/`
 
-El empaquetado de producción y Knowledge Manifest forman parte de la siguiente etapa del roadmap.
+Incluye:
+
+- `INSTRUCTIONS.md`;
+- `GPT_CONFIG.md`;
+- `KNOWLEDGE_MANIFEST.md`;
+- `INSTALLATION.md`;
+- `CONTEXT-STRATEGY.md`;
+- `FEW-SHOT-EXAMPLES.md`.
+
+La validación estática del paquete es PASS; la aceptación runtime en un Custom GPT real permanece pendiente antes de declararlo deployment público validado.
 
 ### Gemini
 
@@ -175,11 +186,11 @@ El adapter base se encuentra en:
 
 `platforms/gemini/`
 
-Será actualizado después de estabilizar el paquete ChatGPT.
+Su actualización contra el core actual corresponde a v0.12.
 
 ### Sparks / otras plataformas
 
-Podrán consumir las mismas skills y contratos mediante adapters específicos sin modificar el core académico.
+Podrán consumir las mismas skills y contratos mediante adapters específicos sin modificar el core académico. Solo se añadirá un adapter cuando la forma de instalación de la plataforma esté suficientemente definida.
 
 ## Cómo usar el repositorio
 
@@ -190,6 +201,14 @@ Podrán consumir las mismas skills y contratos mediante adapters específicos si
 3. abre el `SKILL.md` correspondiente;
 4. incorpora esa skill al sistema/agente compatible;
 5. conserva `core/ORCHESTRATION.md`, `core/SKILL-CONTRACT.md` y los perfiles institucionales relevantes como contexto común.
+
+### Para instalar el adapter ChatGPT
+
+Empieza por:
+
+[`platforms/chatgpt-gpt/INSTALLATION.md`](platforms/chatgpt-gpt/INSTALLATION.md)
+
+El manifest determina qué va en Instructions, qué va en Knowledge y qué archivos deben permanecer locales a cada actividad.
 
 ### Para implementar Academic Colombia completo
 
@@ -241,9 +260,11 @@ El repositorio incluye suites para:
 - auditoría/reparación documental;
 - Skill Contract;
 - routing de orquestación;
-- escenarios E2E.
+- escenarios E2E;
+- adapter ChatGPT;
+- casos adversariales ChatGPT.
 
-Los escenarios E2E distinguen explícitamente entre casos realmente ejecutados y fixtures preparados para validación futura.
+Los casos distinguen explícitamente entre especificación declarativa, pruebas realmente ejecutadas y validaciones todavía pendientes de runtime.
 
 ## Fuentes externas
 

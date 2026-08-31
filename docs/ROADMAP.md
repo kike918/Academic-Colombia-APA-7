@@ -57,33 +57,45 @@
 - Propagación de `critical_gate` y estados blocked/partial/success.
 - QA académico ampliado por requisitos, evidencia, APA, artefacto, método y fallback.
 - Arquitectura actualizada a las capas reales del sistema.
-- 15 casos de routing del orquestador.
-- 8 casos de aceptación end-to-end anonimizados/representativos.
+- Casos de routing y aceptación end-to-end.
+- README/directorio de skills, Page mínima y alcance de licencia.
 
-## v0.11 — ChatGPT production adapter
-- Definir `KNOWLEDGE_MANIFEST.md`.
-- Consolidar Instructions contra v0.10.
-- Empaquetado reproducible para GPT/Skills.
-- Casos de aceptación específicos de ChatGPT.
-- Validar límites de Knowledge y estrategia de archivos.
+## v0.11 — ChatGPT production adapter package
+- `KNOWLEDGE_MANIFEST.md` para separar Instructions, Knowledge y archivos task-scoped.
+- `INSTALLATION.md` con instalación reproducible del Custom GPT.
+- `CONTEXT-STRATEGY.md` con carga por relevancia y minimum sufficient context.
+- `INSTRUCTIONS.md` consolidado contra core v0.10+ sin duplicar skills completas.
+- `GPT_CONFIG.md` actualizado a las capacidades reales del framework.
+- Few-shot examples de alto valor centrados en routing e integridad.
+- Suite de aceptación específica del adapter ChatGPT.
+- Suite adversarial para referencias inventadas, falsa readiness, prompt injection y evasión de detectores.
+- Validación estática del paquete; la ejecución en una instancia real de Custom GPT debe completarse antes de anunciar un deployment público validado.
 
 ## v0.12 — Gemini / other platform adapters
-- Gem adapter actualizado desde core v0.10+.
-- Adapter Spark cuando la plataforma/forma de instalación esté definida.
-- Pruebas cruzadas de routing, integridad y readiness.
+- Actualizar Gemini Gem desde el core y contrato actuales.
+- Definir manifest/instalación/context strategy equivalentes cuando la plataforma lo requiera.
+- Adapter adicional (por ejemplo Spark) solo cuando su forma de instalación esté suficientemente definida.
+- Pruebas cruzadas de autoridad, routing, integridad y readiness.
 
-## v0.13 — Repository validation / CI
+## v0.13 — Declarative repository validation
 - Validador de estructura del repo.
-- Validación automática de VERSION/CHANGELOG/internal links/skill contract.
-- GitHub Actions cuando la automatización aporte valor real.
+- Validación automática de VERSION/CHANGELOG/internal links/skill contract/registry.
+- GitHub Actions solo para linting/consistencia del framework declarativo.
 - Tras estabilizar checks, considerar `Require status checks` en `main`.
 
-## v1.0 — Stable academic engine
-- Suite estable y documentada.
-- Instalación por plataforma.
-- Regression tests académicos end-to-end.
-- Semántica de orquestación/contrato estable.
+## v0.14 — Empirical coverage
+- Más actividades SENA reales anonimizadas antes de crear subperfiles.
+- Casos reales XLSX, PPTX, infografía y video/web.
+- Evaluar `academic-integrity-review` solo si los casos reales demuestran un gap; no construir funciones de evasión de detectores.
+- Añadir `institutions/TEMPLATE.md` para futuras extensiones sin ampliar instituciones todavía.
+
+## v1.0 — Stable academic-agent framework
+- Core y Skill Contract v1 estables.
+- Adaptadores principales utilizables y documentados.
+- Corpus E2E suficiente para los artefactos/instituciones declarados.
+- Semántica de orquestación/readiness estable.
 - Política de releases y compatibilidad.
+- Documentación pública navegable.
 
 ## Fuera de alcance antes de v1.0
 
@@ -92,6 +104,9 @@ No convertir en dependencia obligatoria:
 - webhooks;
 - runtime autónomo;
 - memoria personal externa;
-- RAG o bóvedas externas.
+- RAG o bóvedas externas;
+- telemetría;
+- evasión de detectores de IA/plagio;
+- expansión masiva de instituciones.
 
-Estas capas podrán consumir Academic Colombia después de que el motor académico sea estable, pero no formarán parte del core.
+Estas capas o extensiones podrán evaluarse después de que el framework académico sea estable, pero no forman parte del core actual.
