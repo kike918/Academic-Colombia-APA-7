@@ -97,7 +97,10 @@ def validate_manifest(errors: list[str], skill_names: set[str]) -> None:
     manifest = ROOT / "distribution" / "SKILLS-MANIFEST.md"
     if not manifest.is_file():
         return
-    manifest_names = set(MANIFEST_SKILL_RE.findall(manifest.read_text(encoding="utf-8")))
+    manifest_names = {
+        name for name in MANIFEST_SKILL_RE.findall(manifest.read_text(encoding="utf-8"))
+        if "<" not in name and ">" not in name
+    }
     missing = sorted(skill_names - manifest_names)
     stale = sorted(manifest_names - skill_names)
     if missing:
