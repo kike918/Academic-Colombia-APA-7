@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.10.2 - 2026-08-31
+
+### Added
+- `docs/index.md` como portada mínima preparada para GitHub Pages.
+- `docs/LICENSE-SCOPE.md` para aclarar alcance MIT, terceros, instituciones y contribuciones.
+- `docs/V0.10.2-AUDIT-REPORT.md` con auditoría de ramas, core, skills, documentación, licencia, tests y readiness.
+
+### Changed
+- README actualizado para enlazar la documentación web mínima y el alcance de licencia.
+- `docs/DOCUMENTATION-STRATEGY.md` pasa de diferir una landing a iniciar una Page mínima desde `main/docs` sin duplicar la fuente canónica.
+
 ## 0.10.1 - 2026-08-31
 
 ### Added
