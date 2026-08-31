@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.11.0 - 2026-08-31
+
+### Added
+- `platforms/chatgpt-gpt/KNOWLEDGE_MANIFEST.md` para separar Instructions, Knowledge y archivos task-scoped.
+- `platforms/chatgpt-gpt/INSTALLATION.md` con instalación reproducible del Custom GPT.
+- `platforms/chatgpt-gpt/CONTEXT-STRATEGY.md` con carga condicional y minimum sufficient context.
+- `platforms/chatgpt-gpt/FEW-SHOT-EXAMPLES.md` con 8 ejemplos de routing e integridad.
+- `tests/CHATGPT_ADAPTER_CASES.md` con 20 casos de aceptación del adapter.
+- `tests/CHATGPT_ADVERSARIAL_CASES.md` con 15 casos adversariales.
+- `docs/V0.11-VALIDATION-REPORT.md` con estado de validación estática y runtime pendiente.
+
+### Changed
+- `platforms/chatgpt-gpt/INSTRUCTIONS.md` pasa de configuración inicial a adapter consolidado contra core/orchestration/Skill Contract v0.10+.
+- `platforms/chatgpt-gpt/GPT_CONFIG.md` se alinea con las 16 skills, evidencia, artifacts y gates reales del framework.
+- Roadmap delimita v0.12–v1.0 y excluye telemetría, evasión de detectores y expansión masiva antes de v1.0.
+
+### Validation
+- Compatibilidad estática del paquete ChatGPT: PASS.
+- Ejecución en una instancia real de Custom GPT: PENDING; no se declara deployment público validado hasta completar esa prueba.
+
 ## 0.10.2 - 2026-08-31
 
 ### Added
@@ -32,7 +52,7 @@
 ### Changed
 - Las 15 skills existentes adoptan el contrato común sin perder su salida humana legible.
 - `core/ORCHESTRATION.md` propaga `status`, gaps y `critical_gate` y solo permite que `academic-final-review` declare READY.
-- `quality/ACADEMIC-QA.md` amplía gates de requisitos, evidencia, APA, artefactos, método, fallback y orquestación.
+- `quality/ACADEMIC-QA.md` amplía gates de requisitos, evidencia, APA, artefacto, método, fallback y orquestación.
 - `docs/ARCHITECTURE.md`, `docs/ROADMAP.md` y README se alinean con la arquitectura real del sistema.
 - El workflow de evidencia incorpora explícitamente source evaluator → evidence mapper → citation manager → critical review.
 
