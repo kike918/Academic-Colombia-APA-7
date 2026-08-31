@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.10.1 - 2026-08-31
+
+### Added
+- `docs/SKILLS-DIRECTORY.md` como catálogo funcional de las 16 skills nativas.
+- `docs/DOCUMENTATION-STRATEGY.md` con la estrategia README → docs → futura GitHub Pages sin duplicar fuentes de verdad.
+
+### Changed
+- README reconstruido como puerta de entrada pública del proyecto: propósito, capacidades, skills, orquestación, artefactos, uso por plataforma, testing, gobernanza y navegación.
+- La estrategia de landing queda diferida hasta una etapa de adopción pública/v1.x y deberá generarse desde Markdown canónico del repositorio.
+
 ## 0.10.0 - 2026-08-31
 
 ### Added
@@ -96,7 +106,7 @@
 ## 0.2.0 - 2026-08-30
 
 ### Added
-- Registro de fuentes oficiales UNAD/SENA verificadas.
+- Registro de fuentes oficiales verificadas para UNAD y SENA.
 - Casos de regresión académica para validar futuras versiones del GPT, skills y Gem.
 - Advertencia explícita sobre el instructivo SENA APA 6 de 2019 como fuente obsoleta frente a APA 7.
 
@@ -110,7 +120,7 @@
 ### Added
 - Core académico neutral.
 - Perfil institucional UNAD.
-- Perfil institucional SENA.
+- Perfil SENA.
 - Skill APA 7 académica.
 - Skill de análisis de requisitos.
 - Skill de revisión final.
