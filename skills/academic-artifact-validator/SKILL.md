@@ -62,3 +62,13 @@ Return:
 - critical issues;
 - recommended fixes;
 - readiness score.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+
+- `outputs.artifact_checks`: resultados por artefacto/componente.
+- `findings`: fallos críticos, importantes y mejoras.
+- `gaps`: artefactos inaccesibles, evidencia faltante o validaciones no ejecutables.
+- `next_recommended`: normalmente `academic-final-review` o una skill correctiva pertinente.
+- `critical_gate: fail` si un artefacto requerido está roto/inaccesible, contiene un error crítico de fórmula/dato, o incumple un requisito obligatorio.
