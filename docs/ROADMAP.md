@@ -46,32 +46,43 @@
 ## v0.9 — Governance and orchestration
 - MIT License.
 - Contribución por branch/fork + PR.
-- Política de protección de `main`.
+- Protección de `main` mediante ruleset.
 - Core de orquestación portable.
 - Skill `academic-workflow-orchestrator`.
-- README/roadmap alineados con el estado real.
 
-## v0.10 — End-to-end acceptance
-- Batería de documentos universitarios reales anonimizados.
-- Flujos completos por tipo de artefacto.
-- Contratos de entrada/salida entre skills refinados.
-- Matriz READY / NOT READY estable.
+## v0.10 — End-to-end stabilization
+- `core/SKILL-CONTRACT.md` como contrato interoperable v1.
+- Migración de todas las skills existentes al contrato común.
+- Skill `academic-evidence-mapper` para trazabilidad claim → evidence → source → citation.
+- Propagación de `critical_gate` y estados blocked/partial/success.
+- QA académico ampliado por requisitos, evidencia, APA, artefacto, método y fallback.
+- Arquitectura actualizada a las capas reales del sistema.
+- 15 casos de routing del orquestador.
+- 8 casos de aceptación end-to-end anonimizados/representativos.
 
 ## v0.11 — ChatGPT production adapter
-- Paquete de Knowledge.
-- Instructions consolidadas.
-- Casos de aceptación específicos de plataforma.
+- Definir `KNOWLEDGE_MANIFEST.md`.
+- Consolidar Instructions contra v0.10.
+- Empaquetado reproducible para GPT/Skills.
+- Casos de aceptación específicos de ChatGPT.
+- Validar límites de Knowledge y estrategia de archivos.
 
 ## v0.12 — Gemini / other platform adapters
-- Gem adapter actualizado.
-- Adaptadores adicionales cuando sean necesarios.
-- Pruebas cruzadas de comportamiento.
+- Gem adapter actualizado desde core v0.10+.
+- Adapter Spark cuando la plataforma/forma de instalación esté definida.
+- Pruebas cruzadas de routing, integridad y readiness.
+
+## v0.13 — Repository validation / CI
+- Validador de estructura del repo.
+- Validación automática de VERSION/CHANGELOG/internal links/skill contract.
+- GitHub Actions cuando la automatización aporte valor real.
+- Tras estabilizar checks, considerar `Require status checks` en `main`.
 
 ## v1.0 — Stable academic engine
 - Suite estable y documentada.
 - Instalación por plataforma.
 - Regression tests académicos end-to-end.
-- Semántica de orquestación estable.
+- Semántica de orquestación/contrato estable.
 - Política de releases y compatibilidad.
 
 ## Fuera de alcance antes de v1.0

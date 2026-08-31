@@ -31,3 +31,12 @@ Revisa y corrige tablas y figuras académicas aplicando la jerarquía actividad 
 - impacto: crítico / recomendado / opcional;
 - corrección propuesta;
 - fuente pendiente de verificar, si aplica.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+- `outputs.visual_elements`: inventario y estado de tablas/figuras.
+- `findings`: numeración, títulos, notas, legibilidad y atribución.
+- `gaps`: fuente/procedencia no verificable.
+- `next_recommended`: `academic-evidence-mapper`, `academic-citation-manager` o `academic-artifact-validator`.
+- `critical_gate: fail` cuando una tabla/figura material presenta datos sin procedencia verificable, atribución falsa o contenido engañoso.

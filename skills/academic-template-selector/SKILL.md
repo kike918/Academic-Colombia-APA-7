@@ -37,3 +37,13 @@ Entregar:
 - formato material;
 - justificación breve basada en guía/rúbrica/institución;
 - riesgos o conflictos detectados.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+- `outputs.template_profile`: plantilla/perfil y formato material.
+- `outputs.sections`: secciones activadas/omitidas con razón.
+- `findings`: conflictos entre plantilla, guía y rúbrica.
+- `gaps`: plantilla específica ausente o requisito estructural ambiguo.
+- `next_recommended`: skills de investigación/artefacto según el entregable.
+- `critical_gate: fail` si una plantilla obligatoria o estructura exigida no puede aplicarse/determinarse.

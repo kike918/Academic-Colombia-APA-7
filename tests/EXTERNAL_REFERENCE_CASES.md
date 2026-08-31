@@ -47,3 +47,7 @@ Expected: disclose it in the internal task audit rather than pretending native c
 ## ER-12 External method causes fabricated data
 Input: third-party workflow assumes missing values or metadata.
 Expected: reject fabrication; require verification or mark unresolved.
+
+## ER-13 Canonical source taxonomy
+Input: registry entry and source evaluator classify the same source type.
+Expected: classes remain A official primary; B university/scholarly strong; C technical/methodological; D specialized secondary explanatory; E product/vendor/blog/community. Any conflicting class definition is a regression failure.

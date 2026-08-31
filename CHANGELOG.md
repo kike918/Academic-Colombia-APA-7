@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.10.0 - 2026-08-31
+
+### Added
+- `core/SKILL-CONTRACT.md` con envelope interoperable v1 para todas las skills.
+- Skill `academic-evidence-mapper` para trazabilidad claim → evidence → source → citation.
+- 15 casos de routing del orquestador.
+- 8 casos de aceptación end-to-end anonimizados/representativos.
+
+### Changed
+- Las 15 skills existentes adoptan el contrato común sin perder su salida humana legible.
+- `core/ORCHESTRATION.md` propaga `status`, gaps y `critical_gate` y solo permite que `academic-final-review` declare READY.
+- `quality/ACADEMIC-QA.md` amplía gates de requisitos, evidencia, APA, artefactos, método, fallback y orquestación.
+- `docs/ARCHITECTURE.md`, `docs/ROADMAP.md` y README se alinean con la arquitectura real del sistema.
+- El workflow de evidencia incorpora explícitamente source evaluator → evidence mapper → citation manager → critical review.
+
 ## 0.9.0 - 2026-08-30
 
 ### Added
@@ -81,7 +96,7 @@
 ## 0.2.0 - 2026-08-30
 
 ### Added
-- Registro de fuentes oficiales verificadas para UNAD y SENA.
+- Registro de fuentes oficiales UNAD/SENA verificadas.
 - Casos de regresión académica para validar futuras versiones del GPT, skills y Gem.
 - Advertencia explícita sobre el instructivo SENA APA 6 de 2019 como fuente obsoleta frente a APA 7.
 

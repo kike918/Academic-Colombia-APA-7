@@ -8,7 +8,7 @@ No reemplaza las skills especializadas. Decide cuáles ejecutar, en qué orden y
 
 ## Fuente canónica
 
-Leer y aplicar `core/ORCHESTRATION.md`.
+Leer y aplicar `core/ORCHESTRATION.md` y `core/SKILL-CONTRACT.md`.
 
 ## Entradas
 
@@ -26,21 +26,23 @@ Leer y aplicar `core/ORCHESTRATION.md`.
 3. Determinar el tipo de artefacto y seleccionar las skills necesarias.
 4. Omitir skills que no aporten al entregable.
 5. Evaluar cobertura nativa.
-6. Si existe un gap material, llamar `external-reference-resolver`.
-7. Mantener trazabilidad entre outputs de skills.
-8. Pasar por los gates de calidad correspondientes.
-9. Terminar siempre en `academic-final-review` antes de declarar READY.
+6. Si existe un gap material de capacidad, llamar `external-reference-resolver`.
+7. Mantener trazabilidad y contrato entre outputs de skills.
+8. Usar `academic-evidence-mapper` cuando existan claims materiales que requieran sustento.
+9. Propagar cualquier `critical_gate: fail` hasta su resolución/revalidación.
+10. Pasar por los gates de calidad correspondientes.
+11. Terminar siempre en `academic-final-review` antes de declarar READY.
 
 ## Routing mínimo
 
 ### Documento nuevo
-requirements → template → research/evidence → citation/APA → critical review → artifact validation → final review.
+requirements → template → research/source evaluation → evidence mapper → citation/APA → critical review → artifact validation → final review.
 
 ### Documento existente
-academic-document-auditor → evidence/citation resolution si aplica → academic-document-repair autorizado → artifact/visual QA → final review.
+academic-document-auditor → evidence mapper/citation resolution si aplica → academic-document-repair autorizado → artifact/visual QA → final review.
 
 ### XLSX / análisis cuantitativo
-requirements → source/data validation → statistical analysis → tables/charts → artifact validation → final review.
+requirements → source/data validation → statistical analysis → evidence mapper cuando haya claims derivados → tables/charts → artifact validation → final review.
 
 ### PPTX / visual / video / web
 requirements → source/evidence validation → artifact-specific validation → final review.
@@ -53,13 +55,24 @@ requirements → source/evidence validation → artifact-specific validation →
 - No introducir una referencia externa cuando la cobertura nativa sea suficiente.
 - No declarar READY si queda un requisito obligatorio, evidencia crítica o QA pendiente.
 - Si el contenido fue previamente validado y solo se solicita formato, activar reparación conservadora.
+- `status: blocked` no se convierte en `success` sin resolver el gap.
 
 ## Salida
 
 Entregar un plan/rastro de ejecución con:
-
 - skills ejecutadas;
 - skills omitidas y razón;
 - findings/gaps;
 - fallbacks externos utilizados, si existen;
+- critical gates activos/resueltos;
 - estado final: READY / NOT READY / USER DECISION REQUIRED.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+- `outputs.execution_trace`: routing ejecutado y omitido.
+- `outputs.readiness_candidate`: estado previo al gate final; nunca sustituye a `academic-final-review`.
+- `findings`: conflictos de routing/cobertura.
+- `gaps`: capacidades o insumos pendientes.
+- `next_recommended`: siguiente skill/acción.
+- `critical_gate: fail` si un gate crítico propagado permanece sin resolver o si no puede completarse una ruta obligatoria.

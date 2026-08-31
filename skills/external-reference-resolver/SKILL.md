@@ -17,33 +17,15 @@ Determines whether Academic Colombia's native skills sufficiently cover an acade
 
 1. Parse the task requirements.
 2. Map each requirement to one or more native Academic Colombia skills.
-3. Mark coverage as:
-   - full;
-   - partial;
-   - missing.
+3. Mark coverage as full / partial / missing.
 4. If all critical requirements have full native coverage, do not use an external reference.
 5. If a critical requirement is partial/missing, describe the capability gap precisely.
 6. Search approved external references by capability, not by popularity or brand.
-7. Rank candidates by:
-   - authority appropriate to the claim;
-   - methodological relevance;
-   - freshness/version;
-   - license/reuse compatibility;
-   - scope fit;
-   - conflict risk.
+7. Rank candidates by authority appropriate to the claim, methodological relevance, freshness/version, license/reuse compatibility, scope fit and conflict risk.
 8. Select the narrowest sufficient external reference.
-9. Choose consumption mode:
-   - reference-only;
-   - adapted workflow;
-   - temporary fallback;
-   - native-promotion candidate.
+9. Choose consumption mode: reference-only / adapted workflow / temporary fallback / native-promotion candidate.
 10. Apply the external method only to the uncovered capability.
-11. Re-apply:
-   - guide/rubric requirements;
-   - institutional profile;
-   - APA/integrity requirements;
-   - artifact QA;
-   - final academic QA.
+11. Re-apply guide/rubric requirements, institutional profile, APA/integrity requirements, artifact QA and final academic QA.
 12. Record external fallback in the audit when material.
 
 ## Hard rules
@@ -58,15 +40,12 @@ Determines whether Academic Colombia's native skills sufficiently cover an acade
 
 ## Coverage matrix output
 
-Produce:
-
 | Requirement | Native skill | Coverage | Gap | External fallback | Mode |
 |---|---|---|---|---|---|
 
 ## Final output
 
 Return:
-
 - native skills selected;
 - uncovered gaps;
 - external references consumed, if any;
@@ -76,10 +55,19 @@ Return:
 - recommendation to promote a fallback into a native skill if recurring;
 - readiness status after internal QA.
 
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+- `outputs.coverage_matrix`: cobertura nativa y fallback seleccionado.
+- `outputs.external_use`: referencia, modo, licencia/autoridad y adaptación.
+- `findings`: conflictos de autoridad/licencia/frescura.
+- `gaps`: capacidad todavía no cubierta.
+- `next_recommended`: skill nativa que debe retomar el flujo después del fallback.
+- `critical_gate: fail` si una capacidad material no puede cubrirse con medios nativos ni fallback aprobado o si existe conflicto de autoridad/licencia no resuelto.
+
 ## Example
 
 If an assignment requires a power analysis and the native statistical skill does not yet implement one:
-
 1. mark power analysis as a specific missing capability;
 2. consult an approved external scientific-method reference such as a relevant K-Dense workflow;
 3. adapt only the power-analysis method;

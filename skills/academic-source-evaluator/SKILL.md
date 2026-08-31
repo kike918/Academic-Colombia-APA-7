@@ -41,3 +41,13 @@ Evalúa la autoridad, recuperabilidad, vigencia y uso permitido de una fuente an
 - uso recomendado;
 - conflictos;
 - decisión: incorporar / usar solo como ejemplo / descartar / verificar más.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+
+- `outputs.sources`: fuentes evaluadas con clase de autoridad, vigencia y uso permitido.
+- `findings`: conflictos, baja autoridad, obsolescencia o problemas de recuperabilidad.
+- `gaps`: metadata, actualidad o fuente primaria pendiente.
+- `next_recommended`: `academic-evidence-mapper`, `academic-citation-manager` o `external-reference-resolver` si existe un gap de capacidad, no de evidencia.
+- `critical_gate: fail` cuando una fuente crítica del trabajo es falsa, no verificable, materialmente obsoleta o contradice una autoridad superior sin resolución.

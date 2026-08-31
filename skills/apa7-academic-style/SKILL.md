@@ -29,3 +29,13 @@ Distinguir errores APA de preferencias institucionales.
 - correcciones;
 - elementos pendientes de verificación;
 - estado final: conforme / conforme con ajustes / no conforme.
+
+## Skill Contract v1
+
+Cumplir `core/SKILL-CONTRACT.md`.
+- `outputs.apa_status`: conforme / conforme_con_ajustes / no_conforme.
+- `outputs.corrections`: correcciones APA/institucionales verificables.
+- `findings`: errores y preferencias institucionales separadas.
+- `gaps`: metadata o formato no inspeccionable.
+- `next_recommended`: `academic-tables-figures`, `academic-document-repair` o `academic-final-review` según el caso.
+- `critical_gate: fail` si hay integridad bibliográfica comprometida, citas críticas inventadas o incumplimiento material de formato exigido por guía/institución.
